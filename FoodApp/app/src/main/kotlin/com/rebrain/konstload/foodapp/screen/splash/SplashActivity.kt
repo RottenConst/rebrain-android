@@ -1,7 +1,8 @@
-package com.rebrain.konstload.foodapp
+package com.rebrain.konstload.foodapp.screen.splash
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.rebrain.konstload.foodapp.R
 
 class SplashActivity : AppCompatActivity() {
 
