@@ -5,10 +5,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.intro.IntroActivity" android:background="@color/splach">
+        tools:context=".screen.intro.IntroActivity" android:background="@color/backgroundGreen">
 
     <ImageView
-            android:src="@drawable/ic_eda"
+            android:src="@drawable/eda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/intro_icon" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/about_app"
-            android:textColor="@color/wite" android:textStyle="bold" android:textSize="22sp"
+            android:textColor="@color/white" android:textStyle="bold" android:textSize="22sp"
             android:letterSpacing="0.01" android:lineSpacingExtra="0sp" android:gravity="center_horizontal"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
@@ -34,7 +34,7 @@
             android:text="@string/intro_text_about"
             android:layout_height="69dp"
             android:id="@+id/about_app_text"
-            android:fontFamily="sans-serif" android:textColor="@color/wite" android:textSize="16sp"
+            android:fontFamily="sans-serif" android:textColor="@color/white" android:textSize="16sp"
             android:lineSpacingExtra="7sp" android:letterSpacing="0.03"
             android:gravity="center|center_horizontal"
             tools:text="@string/intro_text_about"

@@ -1,12 +1,15 @@
 package com.rebrain.konstload.foodapp.screen.splash
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.app.AppCompatActivity
 import com.rebrain.konstload.foodapp.MainActivity
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.screen.intro.IntroActivity
+import com.rebrain.konstload.foodapp.utils.isFirstRunApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -28,14 +31,16 @@ class SplashActivity : AppCompatActivity() {
 
     private suspend fun runNextActivity() {
         delay(500)
-        val isFirst = applicationContext
-            .getSharedPreferences(R.string.first_run.toString(), Context.MODE_PRIVATE)
-            .getBoolean(R.string.first_run.toString(), true)
-        if (isFirst) {
-            startActivity(Intent(applicationContext, IntroActivity::class.java))
-        } else {
-            startActivity(Intent(applicationContext, MainActivity::class.java))
+        when {
+            isFirstRunApp(this) -> start(this, IntroActivity())
+            else -> start(this, MainActivity())
         }
         finish()
+    }
+
+    companion object {
+        fun start(context: Context, activity: Activity) {
+            startActivity(context, Intent(context, activity.javaClass), null)
+        }
     }
 }
