@@ -76,13 +76,3 @@ class PreferencesUtils(private val context: Context) {
             .apply()
     }
 }
-
-//возвращает true, если приложение запускается в первый раз(значение isFirst еще не задано)
-fun isFirstRunApp(context: Context): Boolean {
-    return PreferencesUtils(context).getPrefBool(R.string.first_run, true)
-}
-
-//задает значению SharedPreferences isFirst - false
-fun runNotActivity(context: Context) {
-    PreferencesUtils(context).setPrefBoolean(R.string.first_run, false)
-}
