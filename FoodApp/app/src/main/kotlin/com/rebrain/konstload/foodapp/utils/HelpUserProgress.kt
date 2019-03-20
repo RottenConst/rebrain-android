@@ -1,19 +1,24 @@
 package com.rebrain.konstload.foodapp.utils
 
 import android.content.Context
-import com.rebrain.konstload.foodapp.R
+
+/**
+ * enum-класс с видами подсказказок для пользователя
+ */
+enum class ProgressHelp {
+    INTRO
+}
 
 /**
  * обьект-помошник отвечающий за работу с подскасками и прогрессом изучения приложения пользователем
  */
 object HelpUserProgress {
-    //возвращает true, если приложение запускается в первый раз(значение isFirst еще не задано)
-    fun isFirstRunApp(context: Context): Boolean {
-        return PreferencesUtils(context).getPrefBool(R.string.first_run, true)
+    //задает значене подсказам в SharedPreferences, будут они показываться или нет
+    fun setProgressHelp(context: Context, progress: ProgressHelp, value: Boolean) {
+        PreferencesUtils(context).setPrefBoolean(progress.ordinal, value)
     }
 
-    //задает значению SharedPreferences isFirst - false
-    fun isNotRunNextTime(context: Context) {
-        PreferencesUtils(context).setPrefBoolean(R.string.first_run, false)
-    }
+    //возвращает true, если подсказка запускается в первый раз (будет показана)
+    fun isProgressHelpShow(context: Context, progress: ProgressHelp): Boolean =
+        PreferencesUtils(context).getPrefBool(progress.ordinal, true)
 }

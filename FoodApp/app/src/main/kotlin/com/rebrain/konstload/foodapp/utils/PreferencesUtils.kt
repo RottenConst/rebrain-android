@@ -17,14 +17,11 @@ class PreferencesUtils(private val context: Context) {
     fun getPrefBool(res: Int, defValue: Boolean) = context.getSharedPreferences(res.toString(), Context.MODE_PRIVATE)
         .getBoolean(res.toString(), defValue)
 
-
     fun getPrefInt(res: Int, defValue: Int) = context.getSharedPreferences(res.toString(), Context.MODE_PRIVATE)
         .getInt(res.toString(), defValue)
 
-
     fun getPrefFloat(res: Int, defValue: Float) = context.getSharedPreferences(res.toString(), Context.MODE_PRIVATE)
         .getFloat(res.toString(), defValue)
-
 
     fun getPrefLong(res: Int, defValue: Long) = context.getSharedPreferences(res.toString(), Context.MODE_PRIVATE)
         .getLong(res.toString(), defValue)
@@ -32,7 +29,6 @@ class PreferencesUtils(private val context: Context) {
     fun getPrefStringSet(res: Int, defValue: MutableSet<String>) =
         context.getSharedPreferences(res.toString(), Context.MODE_PRIVATE)
             .getStringSet(res.toString(), defValue)
-
 
     fun setPrefBoolean(res: Int, value: Boolean) {
         context.getSharedPreferences(res.toString(), Context.MODE_PRIVATE)
