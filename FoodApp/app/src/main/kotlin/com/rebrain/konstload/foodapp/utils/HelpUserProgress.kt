@@ -19,6 +19,6 @@ object HelpUserProgress {
     }
 
     //возвращает true, если подсказка запускается в первый раз (будет показана)
-    fun isProgressHelpShow(context: Context, progress: ProgressHelp): Boolean =
+    fun ShowProgressHelp(context: Context, progress: ProgressHelp): Boolean =
         PreferencesUtils(context).getPrefBool(progress.ordinal, true)
 }

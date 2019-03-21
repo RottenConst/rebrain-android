@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import com.rebrain.konstload.foodapp.MainActivity
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.screen.intro.IntroActivity
-import com.rebrain.konstload.foodapp.utils.HelpUserProgress.isProgressHelpShow
+import com.rebrain.konstload.foodapp.utils.HelpUserProgress.ShowProgressHelp
 import com.rebrain.konstload.foodapp.utils.ProgressHelp.INTRO
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,7 +32,7 @@ class SplashActivity : AppCompatActivity() {
     private suspend fun runNextActivity() {
         delay(500)
         when {
-            isProgressHelpShow(this, INTRO) -> IntroActivity.start(this)
+            ShowProgressHelp(this, INTRO) -> IntroActivity.start(this)
             else -> MainActivity.start(this)
         }
         finish()
