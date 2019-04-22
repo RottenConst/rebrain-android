@@ -5,43 +5,52 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".screen.intro.IntroActivity" android:background="@color/backgroundGreen">
+        tools:context=".screen.intro.IntroActivity" android:background="@color/backgroundColor">
 
     <ImageView
             android:src="@drawable/eda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/intro_icon" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp" app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/app_name" tools:srcCompat="@drawable/eda"
-            app:srcCompat="@drawable/eda" android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.13999999"/>
+            android:id="@+id/intro_icon"
+            android:contentDescription="@string/app_name"
+            tools:srcCompat="@drawable/eda"
+            app:srcCompat="@drawable/eda"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
     <TextView
             android:text="@string/intro_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/about_app"
-            android:textColor="@color/white" android:textStyle="bold" android:textSize="22sp"
-            android:letterSpacing="0.01" android:lineSpacingExtra="0sp" android:gravity="center_horizontal"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/about_app_text" android:layout_marginTop="16dp"
+            style="@style/TextView.Big.White"
+            android:gravity="center_horizontal"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/intro_icon"
-            app:layout_constraintVertical_bias="0.95"/>
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/about_app_text"
+            app:layout_constraintVertical_bias="0.85"/>
+
     <TextView
             android:text="@string/intro_text_about"
-            android:layout_height="69dp"
             android:id="@+id/about_app_text"
-            android:fontFamily="sans-serif" android:textColor="@color/white" android:textSize="16sp"
-            android:lineSpacingExtra="7sp" android:letterSpacing="0.03"
-            android:gravity="center|center_horizontal"
             tools:text="@string/intro_text_about"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="16dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.869"
-            android:layout_width="271dp"/>
+            style="@style/TextView.Normal.White"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_marginBottom="120dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/intro_icon"
+            app:layout_constraintVertical_bias="0.75"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"/>
 </android.support.constraint.ConstraintLayout>
