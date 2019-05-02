@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--основная палитра-->
+    <color name="green">#00c652</color>
+    <color name="greenLight">#5efa81</color>
+    <color name="greenDark">#009423</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000001</color>
+    <color name="grey">#9C9C9C</color>
+    <color name="blue">#0091ea</color>
+</resources>

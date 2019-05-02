@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="backgroundGreen">#5BD056</color>
-    <color name="white">#FFFFFF</color>
+    <color name="colorPrimary">@color/green</color>
+    <color name="colorPrimaryLight">@color/greenLight</color>
+    <color name="colorPrimaryDark">@color/greenDark</color>
+    <color name="colorAccent">@color/blue</color>
+    <color name="activeButtonColor">@color/green</color>
+    <color name="notActiveButtonColor">@color/grey</color>
+    <color name="backgroundColor">@color/green</color>
 </resources>
