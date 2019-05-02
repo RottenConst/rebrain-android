@@ -14,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 /**
  * Экран загрузки во время запуска приложения, пока пиложение загружает некоторые базовые данные,
@@ -24,9 +25,40 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        Timber.d("onCreate")
         CoroutineScope(Dispatchers.Main).launch {
             runNextActivity()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Timber.d("onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.d("onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.d("onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Timber.d("onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Timber.d("onRestart")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.d("onDestroy")
     }
 
     private suspend fun runNextActivity() {
