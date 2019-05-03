@@ -1,4 +1,4 @@
-package com.rebrain.konstload.foodapp
+package com.rebrain.konstload.foodapp.base
 
 import android.app.Application
 import timber.log.Timber
