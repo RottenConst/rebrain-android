@@ -17,7 +17,8 @@
             tools:ignore="GoogleAppIndexingWarning">
         <!--Intro Activity-->
         <activity android:name=".screen.intro.IntroActivity"
-                  android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+                  android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+                  android:taskAffinity=".screen.intro">
         </activity>
         <!-- splash activity -->
         <activity
@@ -29,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".screen.main.MainActivity">
         </activity>
     </application>
 
