@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat.startActivity
 import com.rebrain.konstload.foodapp.base.BaseActivity
-import com.rebrain.konstload.foodapp.MainActivity
+import com.rebrain.konstload.foodapp.screen.main.MainActivity
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.screen.intro.IntroActivity
 import com.rebrain.konstload.foodapp.utils.HelpUserProgress.showProgressHelp

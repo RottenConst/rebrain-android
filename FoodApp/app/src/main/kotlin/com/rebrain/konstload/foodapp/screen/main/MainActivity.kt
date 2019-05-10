@@ -1,19 +1,23 @@
-package com.rebrain.konstload.foodapp
+package com.rebrain.konstload.foodapp.screen.main
 
 import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat.startActivity
+import com.rebrain.konstload.foodapp.R
+import com.rebrain.konstload.foodapp.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * главная активность приложения с которой начинаются основные действия в приложении
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        text_view.text = this.localClassName
     }
 
     companion object {
