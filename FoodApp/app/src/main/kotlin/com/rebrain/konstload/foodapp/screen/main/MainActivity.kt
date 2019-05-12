@@ -2,10 +2,8 @@ package com.rebrain.konstload.foodapp.screen.main
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat.startActivity
-import android.support.v4.view.ViewPager
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseActivity
 import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselAdapter

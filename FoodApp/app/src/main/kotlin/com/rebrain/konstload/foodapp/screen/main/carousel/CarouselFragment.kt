@@ -8,6 +8,9 @@ import android.widget.ImageView
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
 
+/**
+ * класс фрагмент для резации карусели с картинками
+ */
 const val ARGUMENT_PAGE_NUMBER = "arg_page_number"
 
 class CarouselFragment : BaseFragment() {
