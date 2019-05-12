@@ -29,8 +29,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation kotlinLib.stdlib_jdk7
-    implementation appcompat_v7
-    implementation constraint_layout
+    implementation lib.appcompat_v7
+    implementation lib.constraint_layout
+    implementation lib.support_v4
 //    tests
     testImplementation tests.junit
     androidTestImplementation tests.runner

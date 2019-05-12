@@ -20,8 +20,11 @@ buildscript {
     ]
 
     //std lib
-    ext.appcompat_v7 = "com.android.support:appcompat-v7:$appCompatVer"
-    ext.constraint_layout = "com.android.support.constraint:constraint-layout:$constraintLayoutVer"
+    ext.lib = [
+        appcompat_v7: "com.android.support:appcompat-v7:$appCompatVer",
+        support_v4: "com.android.support:support-v4:$appCompatVer",
+        constraint_layout: "com.android.support.constraint:constraint-layout:$constraintLayoutVer"
+    ]
 
     //lib for tests
     ext.tests = [
