@@ -7,11 +7,12 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import com.rebrain.konstload.foodapp.screen.main.carousel.CarouselFragment
 
 /**
- * PagerAdapter'ы
  * FragmentPagerAdapter - хранит все страницы в памяти, каждый раз не создает, поэтому быстрый,
- *                        но затратный(подходит для небольшого числа страниц)
+ *                        но затратный(подходит для быстрого перелистывания небольшого числа страниц)
  * FragmentStatePagerAdapter - хранит в паняти только соседнии страцы, остальные пересоздает,
- *                             поэтому может притормаживать(подходит для большого числа страниц)
+ *                             поэтому может притормаживать из-за быстрого перелистывания
+ *                             (подходит для большого количества страниц с большим количеством информации
+ *                             для медленного перелистывания, например книг)
  */
 class FragmentCarouselAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 

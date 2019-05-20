@@ -7,27 +7,31 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_carousel.*
 
+const val ARGUMENT_PAGE_NUMBER = "arg_page_number"
 /**
  * класс фрагмент для резации карусели с картинками
  */
-const val ARGUMENT_PAGE_NUMBER = "arg_page_number"
-
 class CarouselFragment : BaseFragment() {
 
+    override fun getName(): String {
+        return "CarouselFragment"
+    }
+
     private var pageNumber = 0
-    private lateinit var imageCarousel: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         pageNumber = arguments?.getInt(ARGUMENT_PAGE_NUMBER) ?: 0
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_carousel, container, false)
-        imageCarousel = view.findViewById(R.id.image_food)
-        imageCarousel.setImageResource(images[pageNumber])
-        return view
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        inflater.inflate(R.layout.fragment_carousel, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        image_food.setImageResource(images[pageNumber])
     }
 
     companion object {
