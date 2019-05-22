@@ -4,13 +4,14 @@ buildscript {
     //Versions lib
     ext {
         kotlin_version = '1.3.30'
-        appCompatVer = '28.0.0'
+        appCompatVer = '1.0.0'
         constraintLayoutVer = '1.1.3'
         junitVer = '4.12'
-        espressoVer = '3.0.2'
-        runnerVer = '1.0.2'
+        espressoVer = '3.1.0'
+        runnerVer = '1.1.0'
         coroutineVer = '1.1.1'
         timberVer = '4.7.1'
+        ktxVer = '1.2.0-alpha01'
     }
 
     //kotlin
@@ -21,16 +22,17 @@ buildscript {
 
     //std lib
     ext.lib = [
-        appcompat_v7: "com.android.support:appcompat-v7:$appCompatVer",
-        support_v4: "com.android.support:support-v4:$appCompatVer",
-        constraint_layout: "com.android.support.constraint:constraint-layout:$constraintLayoutVer"
+        appcompat_v7: "androidx.appcompat:appcompat:$appCompatVer",
+        support_v4: "androidx.legacy:legacy-support-v4:$appCompatVer",
+        ktx: "androidx.core:core-ktx:$ktxVer",
+        constraint_layout: "androidx.constraintlayout:constraintlayout:$coroutineVer"
     ]
 
     //lib for tests
     ext.tests = [
         junit: "junit:junit:$junitVer",
-        runner: "com.android.support.test:runner:$runnerVer",
-        espresso: "com.android.support.test.espresso:espresso-core:$espressoVer"
+        runner: "androidx.test:runner:$runnerVer",
+        espresso: "androidx.test.espresso:espresso-core:$espressoVer"
     ]
 
     //coroutines

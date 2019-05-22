@@ -12,7 +12,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -32,6 +32,7 @@ dependencies {
     implementation lib.appcompat_v7
     implementation lib.constraint_layout
     implementation lib.support_v4
+    implementation lib.ktx
 //    tests
     testImplementation tests.junit
     androidTestImplementation tests.runner
