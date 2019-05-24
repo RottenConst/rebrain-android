@@ -3,7 +3,7 @@ package com.rebrain.konstload.foodapp.screen.intro
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.content.ContextCompat.startActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseActivity
 import com.rebrain.konstload.foodapp.screen.main.MainActivity
