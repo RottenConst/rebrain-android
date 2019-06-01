@@ -4,10 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.Fragment
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseActivity
-import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselAdapter
-import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselStateAdapter
+import com.rebrain.konstload.foodapp.screen.main.tabs.favorite.FavoriteTabFragment
+import com.rebrain.konstload.foodapp.screen.main.tabs.main.MainTabFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -18,13 +19,20 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val pageAdapter = FragmentCarouselAdapter(supportFragmentManager)
-        view_pager.adapter = pageAdapter
-        text_view.text = this.localClassName
+        createFragment(MainTabFragment.newInstance())
+        //временная кнопка для проверки 2го фрагмента
+        test_btn.setOnClickListener {
+            createFragment(FavoriteTabFragment.newInstance())
+        }
+    }
+
+    private fun createFragment(fragment: Fragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, fragment).commit()
     }
 
     companion object {
-        fun start(context: Context){
+        fun start(context: Context) {
             startActivity(context, Intent(context, MainActivity::class.java), null)
         }
     }
