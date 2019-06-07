@@ -20,10 +20,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         createFragment(MainTabFragment.newInstance())
-        //временная кнопка для проверки 2го фрагмента
-        test_btn.setOnClickListener {
-            createFragment(FavoriteTabFragment.newInstance())
-        }
+
     }
 
     private fun createFragment(fragment: Fragment) {
