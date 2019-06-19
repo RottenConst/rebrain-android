@@ -1,25 +1,46 @@
 package com.rebrain.konstload.foodapp.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import com.rebrain.konstload.foodapp.R
+import kotlinx.android.synthetic.main.bottom_tab.view.*
 
-class BottomTab(context: Context, attrs: AttributeSet? = null) : LinearLayout(context, attrs) {
+class BottomTab @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
+    LinearLayout(context, attrs) {
+
+    private var text: String = ""
+    private var icon: Int = 0
 
     init {
         View.inflate(context, R.layout.bottom_tab, this)
-
-        val imageMain: ImageView = findViewById(R.id.image_main)
-        val caption: TextView = findViewById(R.id.caption)
-
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.BottomTab)
-        imageMain.setImageDrawable(attributes.getDrawable(R.styleable.BottomTab_icon_tabs))
-        caption.text = attributes.getString(R.styleable.BottomTab_caption_text)
-        attributes.recycle()
+        attrs?.let { applyAttrs(it) }
+        orientation = VERTICAL
     }
 
+
+    @SuppressLint("MissingSuperCall")
+    override fun onFinishInflate() {
+        icon_main.setImageResource(icon)
+        caption_tab.text = text
+    }
+
+
+    @SuppressLint("Recycle")
+    private fun applyAttrs(attrs: AttributeSet) {
+        context.obtainStyledAttributes(attrs, R.styleable.BottomTab, 0, 0).apply {
+            try {
+                icon = getResourceId(R.styleable.BottomTab_icon_tabs, 0)
+                text = getText(R.styleable.BottomTab_caption_text) as String
+            } finally {
+                recycle()
+            }
+        }
+    }
+
+    fun setOnClickTab(listener: OnClickListener) {
+        setOnClickListener(listener)
+    }
 }

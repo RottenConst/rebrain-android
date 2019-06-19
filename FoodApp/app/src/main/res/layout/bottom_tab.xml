@@ -13,10 +13,10 @@
                 tools:src="@drawable/ic_main"
                 android:layout_marginBottom="8dp"
                 android:layout_gravity="center"
-                android:id="@+id/image_main"
+                android:id="@+id/icon_main"
                 android:padding="8dp" android:contentDescription="TODO"/>
         <TextView
-                android:id="@+id/caption"
+                android:id="@+id/caption_tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Main"

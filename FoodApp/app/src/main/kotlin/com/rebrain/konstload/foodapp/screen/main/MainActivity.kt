@@ -3,6 +3,7 @@ package com.rebrain.konstload.foodapp.screen.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import com.rebrain.konstload.foodapp.R
@@ -20,7 +21,13 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         createFragment(MainTabFragment.newInstance())
+        bottom_tab_main.setOnClickTab(View.OnClickListener {
+            createFragment(MainTabFragment.newInstance())
+        })
 
+        bottom_tab_favorite.setOnClickTab(View.OnClickListener {
+            createFragment(FavoriteTabFragment.newInstance())
+        })
     }
 
     private fun createFragment(fragment: Fragment) {
