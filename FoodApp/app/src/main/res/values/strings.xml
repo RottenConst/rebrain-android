@@ -5,4 +5,6 @@
     <string name="intro_text">Cервис для покупки еды</string>
     <string name="intro_text_about">В этом приложении можно собрать продуктовую корзину по самым низким ценам</string>
     <string name="main_tab_text">Main</string>
+    <string name="favorite_tab_text">Favorite</string>
+    <string name="icon_button">icon tab bar</string>
 </resources>

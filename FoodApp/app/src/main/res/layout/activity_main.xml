@@ -14,32 +14,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/bottom_tab_main"/>
+            app:layout_constraintBottom_toTopOf="@+id/bottom_bar"/>
 
-    <com.rebrain.konstload.foodapp.view.BottomTab
-            android:id="@+id/bottom_tab_main"
-            android:layout_width="wrap_content"
+    <com.rebrain.konstload.foodapp.view.BottomBar
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:caption_text="Main"
-            app:icon_tabs="@drawable/ic_main"
-            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_container" android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.2" android:layout_marginBottom="8dp"/>
-
-    <com.rebrain.konstload.foodapp.view.BottomTab
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:icon_tabs="@drawable/ic_favorites"
-            app:caption_text="Favorites" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/fragment_container"
-            android:orientation="vertical" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.8"
-            android:id="@+id/bottom_tab_favorite"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

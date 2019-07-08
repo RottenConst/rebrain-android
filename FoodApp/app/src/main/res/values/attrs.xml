@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="BottomTab">
-        <attr name="icon_tabs" format="reference"/>
-        <attr name="caption_text" format="string"/>
+    <declare-styleable name="ButtonTabBar">
+        <attr name="icon_button_tab" format="reference"/>
+        <attr name="title_button_tab" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="BottomBar">
+        <attr name="background_color" format="reference"/>
+    </declare-styleable>
+
+
 </resources>
