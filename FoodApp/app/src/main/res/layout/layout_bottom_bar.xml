@@ -12,16 +12,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:title_button_tab="@string/main_tab_text"
-            app:icon_button_tab="@drawable/ic_main"
-            android:layout_weight="1"/>
+            app:icon_button_tab="@drawable/img_main"
+            android:layout_weight="1"
+            app:type_btn="MAIN"/>
 
     <com.rebrain.konstload.foodapp.view.ButtonTabBar
             android:id="@+id/favorite_button_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:title_button_tab="@string/favorite_tab_text"
-            app:icon_button_tab="@drawable/ic_favorites"
+            app:icon_button_tab="@drawable/img_favorites"
             android:layout_weight="1"
-    />
+            app:type_btn="FAVORITE"/>
 
 </merge>

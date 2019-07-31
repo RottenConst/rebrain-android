@@ -9,13 +9,13 @@
         android:id="@+id/info_screen">
 
     <ImageView
-            android:src="@drawable/eda"
+            android:src="@drawable/img_eda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/intro_icon"
             android:contentDescription="@string/app_name"
-            tools:srcCompat="@drawable/eda"
-            app:srcCompat="@drawable/eda"
+            tools:srcCompat="@drawable/img_eda"
+            app:srcCompat="@drawable/img_eda"
             android:layout_marginTop="32dp"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginEnd="8dp"

@@ -2,7 +2,9 @@ package com.rebrain.konstload.foodapp.view
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
 import android.widget.LinearLayout
 import com.rebrain.konstload.foodapp.R
@@ -19,7 +21,7 @@ class ButtonTabBar @JvmOverloads constructor(
 ) :
     LinearLayout(context, attrs) {
 
-    private lateinit var listener: OnClickListener
+    lateinit var type: TabType
 
     init {
         View.inflate(context, R.layout.layout_button_tab_bar, this)
@@ -34,22 +36,17 @@ class ButtonTabBar @JvmOverloads constructor(
         title_button_tab.text = text
     }
 
-    fun setButtonListener(listener: OnClickListener) {
-        this.listener = listener
-        listener.onClick(this)
-    }
-
-    fun switchIconButton(click: Boolean, check: Int) {
+    fun switchColorButton(click: Boolean) {
         if (click) {
-            setIcon(check)
+            setColorButton(R.color.activeButtonColor)
         } else {
-            setIcon(icon)
+            setColorButton(R.color.black)
         }
     }
 
-    fun setColorButton(color: Int) {
-        title_button_tab.setTextColor(color)
-        icon_button_tab.setColorFilter(color)
+    private fun setColorButton(color: Int) {
+        title_button_tab.setTextColor(resources.getColor(color))
+        icon_button_tab.setColorFilter(resources.getColor(color))
     }
 
     private fun setText(text: String){
@@ -65,6 +62,10 @@ class ButtonTabBar @JvmOverloads constructor(
             try {
                 text = getText(R.styleable.ButtonTabBar_title_button_tab).toString()
                 icon = getResourceId(R.styleable.ButtonTabBar_icon_button_tab, 0)
+                when(getInt(R.styleable.ButtonTabBar_type_btn, 0)){
+                    0 -> type = TabType.MAIN
+                    1 -> type = TabType.FAVORITE
+                }
             } finally {
                 recycle()
             }

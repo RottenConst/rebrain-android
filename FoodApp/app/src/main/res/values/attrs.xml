@@ -3,6 +3,10 @@
     <declare-styleable name="ButtonTabBar">
         <attr name="icon_button_tab" format="reference"/>
         <attr name="title_button_tab" format="string"/>
+        <attr name="type_btn" format="enum">
+            <enum name="MAIN" value="0"/>
+            <enum name="FAVORITE" value="1"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="BottomBar">

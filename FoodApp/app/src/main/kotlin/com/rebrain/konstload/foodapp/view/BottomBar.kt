@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import com.rebrain.konstload.foodapp.R
+import kotlinx.android.synthetic.main.layout_bottom_bar.view.*
 
 /**
  * Боттом-бар
@@ -32,22 +33,27 @@ class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         addView(ButtonTabBar(context, icon = icon, text = text))
     }
 
-    fun checkButton(item: ButtonTabBar, icon: Int) {
+    fun checkButton(item: View) {
         buttons.forEach { button ->
             if (button.id == item.id) {
-                button.switchIconButton(true, icon)
+                button.switchColorButton(true)
             } else {
-                button.switchIconButton(false, icon)
+                button.switchColorButton(false)
             }
         }
     }
 
-    fun getButton(item: ButtonTabBar): ButtonTabBar {
-        lateinit var btn: ButtonTabBar
-        buttons.forEach {
-            if (it.id == item.id) btn = it
+    fun setClickListener(type: TabType) {
+        when (type.ordinal) {
+            buttons.indexOf(main_button_tab) -> buttons[type.ordinal].setOnClickListener {
+                type.event.invoke(type)
+                checkButton(it)
+            }
+            buttons.indexOf(favorite_button_tab) -> buttons[type.ordinal].setOnClickListener {
+                type.event.invoke(type)
+                checkButton(it)
+            }
         }
-        return btn
     }
 
     companion object {

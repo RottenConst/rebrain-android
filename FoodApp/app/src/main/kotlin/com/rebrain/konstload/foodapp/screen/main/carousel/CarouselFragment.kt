@@ -37,16 +37,16 @@ class CarouselFragment : BaseFragment() {
 
     companion object {
         val images = listOf(
-            R.drawable.one,
-            R.drawable.two,
-            R.drawable.three,
-            R.drawable.four,
-            R.drawable.five,
-            R.drawable.six,
-            R.drawable.seven,
-            R.drawable.eight,
-            R.drawable.nine,
-            R.drawable.ten
+            R.drawable.img_one,
+            R.drawable.img_two,
+            R.drawable.img_three,
+            R.drawable.img_four,
+            R.drawable.img_five,
+            R.drawable.img_six,
+            R.drawable.img_seven,
+            R.drawable.img_eight,
+            R.drawable.img_nine,
+            R.drawable.img_ten
         )
 
         fun newInstance(page: Int): CarouselFragment {
