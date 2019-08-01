@@ -13,15 +13,13 @@ import kotlinx.android.synthetic.main.layout_button_tab_bar.view.*
 /**
  * Кнопка боттом-бара
  **/
-class ButtonTabBar @JvmOverloads constructor(
+class ButtonTab @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     private var icon: Int = 0,
     private var text: String = ""
 ) :
     LinearLayout(context, attrs) {
-
-    lateinit var type: TabType
 
     init {
         View.inflate(context, R.layout.layout_button_tab_bar, this)
@@ -58,13 +56,13 @@ class ButtonTabBar @JvmOverloads constructor(
     }
 
     private fun applyAttrs(attrs: AttributeSet) {
-        context.theme.obtainStyledAttributes(attrs, R.styleable.ButtonTabBar, 0, 0).apply {
+        context.theme.obtainStyledAttributes(attrs, R.styleable.ButtonTab, 0, 0).apply {
             try {
-                text = getText(R.styleable.ButtonTabBar_title_button_tab).toString()
-                icon = getResourceId(R.styleable.ButtonTabBar_icon_button_tab, 0)
-                when(getInt(R.styleable.ButtonTabBar_type_btn, 0)){
-                    0 -> type = TabType.MAIN
-                    1 -> type = TabType.FAVORITE
+                text = getText(R.styleable.ButtonTab_title_button_tab).toString()
+                icon = getResourceId(R.styleable.ButtonTab_icon_button_tab, 0)
+                when(getInt(R.styleable.ButtonTab_type_btn, 0)){
+                    0 -> TabType.MAIN
+                    1 -> TabType.FAVORITE
                 }
             } finally {
                 recycle()

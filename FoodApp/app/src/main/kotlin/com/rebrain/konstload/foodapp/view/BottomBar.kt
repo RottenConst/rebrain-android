@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import com.rebrain.konstload.foodapp.R
-import kotlinx.android.synthetic.main.layout_bottom_bar.view.*
 
 /**
  * Боттом-бар
@@ -30,7 +29,7 @@ class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     fun createButtonTab(icon: Int, text: String) {
-        addView(ButtonTabBar(context, icon = icon, text = text))
+        addView(ButtonTab(context, icon = icon, text = text))
     }
 
     fun checkButton(item: View) {
@@ -44,12 +43,8 @@ class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     fun setClickListener(type: TabType) {
-        when (type.ordinal) {
-            buttons.indexOf(main_button_tab) -> buttons[type.ordinal].setOnClickListener {
-                type.event.invoke(type)
-                checkButton(it)
-            }
-            buttons.indexOf(favorite_button_tab) -> buttons[type.ordinal].setOnClickListener {
+        if (type.ordinal == buttons.indexOf(buttons[type.ordinal])) {
+            buttons[type.ordinal].setOnClickListener {
                 type.event.invoke(type)
                 checkButton(it)
             }
@@ -57,7 +52,7 @@ class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     companion object {
-        var buttons = mutableListOf<ButtonTabBar>()
+        var buttons = mutableListOf<ButtonTab>()
     }
 }
 

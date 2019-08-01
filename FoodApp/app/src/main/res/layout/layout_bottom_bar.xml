@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         tools:parentTag="android.widget.LinearLayout">
 
-    <com.rebrain.konstload.foodapp.view.ButtonTabBar
+    <com.rebrain.konstload.foodapp.view.ButtonTab
             android:id="@+id/main_button_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
             android:layout_weight="1"
             app:type_btn="MAIN"/>
 
-    <com.rebrain.konstload.foodapp.view.ButtonTabBar
+    <com.rebrain.konstload.foodapp.view.ButtonTab
             android:id="@+id/favorite_button_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

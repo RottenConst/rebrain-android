@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ButtonTabBar">
+    <declare-styleable name="ButtonTab">
         <attr name="icon_button_tab" format="reference"/>
         <attr name="title_button_tab" format="string"/>
         <attr name="type_btn" format="enum">
