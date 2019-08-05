@@ -32,21 +32,12 @@ class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         addView(ButtonTab(context, icon = icon, text = text))
     }
 
-    fun checkButton(item: View) {
-        buttons.forEach { button ->
-            if (button.id == item.id) {
-                button.switchColorButton(true)
-            } else {
-                button.switchColorButton(false)
-            }
-        }
-    }
-
     fun setClickListener(type: TabType) {
         if (type.ordinal == buttons.indexOf(buttons[type.ordinal])) {
             buttons[type.ordinal].setOnClickListener {
-                type.event.invoke(type)
-                checkButton(it)
+                if (!type.fragment.isVisible) {
+                    type.event.invoke(type)
+                }
             }
         }
     }
