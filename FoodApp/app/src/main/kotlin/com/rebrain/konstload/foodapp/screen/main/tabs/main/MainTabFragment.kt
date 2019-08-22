@@ -1,6 +1,5 @@
 package com.rebrain.konstload.foodapp.screen.main.tabs.main
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,21 +19,22 @@ class MainTabFragment : BaseFragment() {
         return "MainTabFragment"
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         activity?.findViewById<ButtonTab>(R.id.main_button_tab)?.switchColorButton(true)
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_main, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val pageAdapter = FragmentCarouselAdapter(childFragmentManager)
         view_pager.adapter = pageAdapter
     }
 
-    override fun onDetach() {
-        super.onDetach()
+    override fun onDestroyView() {
+        super.onDestroyView()
         activity?.findViewById<ButtonTab>(R.id.main_button_tab)?.switchColorButton(false)
     }
 

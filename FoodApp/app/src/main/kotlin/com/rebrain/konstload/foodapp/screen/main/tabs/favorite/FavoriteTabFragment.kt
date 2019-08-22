@@ -1,6 +1,5 @@
 package com.rebrain.konstload.foodapp.screen.main.tabs.favorite
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,20 +18,21 @@ class FavoriteTabFragment : BaseFragment() {
         return "FavoriteTabFragment"
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         activity?.findViewById<ButtonTab>(R.id.favorite_button_tab)?.switchColorButton(true)
+        return inflater.inflate(R.layout.fragment_favorited, container, false)
     }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_favorited, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         text_view.text = getName()
     }
 
-    override fun onDetach() {
-        super.onDetach()
+    override fun onDestroyView() {
+        super.onDestroyView()
         activity?.findViewById<ButtonTab>(R.id.favorite_button_tab)?.switchColorButton(false)
     }
 

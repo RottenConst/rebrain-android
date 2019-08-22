@@ -7,7 +7,6 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseActivity
-import com.rebrain.konstload.foodapp.screen.main.tabs.main.MainTabFragment
 import com.rebrain.konstload.foodapp.view.TabType
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,18 +18,34 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        createFragment(MainTabFragment.newInstance())
+        addFirstFragment()
 
-        TabType.MAIN.event = { createFragment(it.fragment) }
-        TabType.FAVORITE.event = { createFragment(it.fragment) }
+        TabType.MAIN.event = { moveFragment(it) }
+        TabType.FAVORITE.event = { moveFragment(it) }
 
         bottom_bar.setClickListener(TabType.FAVORITE)
         bottom_bar.setClickListener(TabType.MAIN)
     }
 
-    private fun createFragment(fragment: Fragment) {
+    private fun addFirstFragment(){
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_container, TabType.MAIN.fragment)
+            .add(R.id.fragment_container, TabType.FAVORITE.fragment)
+            .detach(TabType.FAVORITE.fragment)
+            .commit()
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragment_container, fragment).commit()
+        fragmentTransaction.replace(R.id.fragment_container, fragment).addToBackStack(null).commit()
+    }
+
+    private fun moveFragment(type: TabType) {
+        val ft = supportFragmentManager.beginTransaction()
+        when (type) {
+            TabType.MAIN -> ft.detach(TabType.FAVORITE.fragment).attach(type.fragment).commit()
+            TabType.FAVORITE -> ft.detach(TabType.MAIN.fragment).attach(type.fragment).commit()
+        }
     }
 
     companion object {
