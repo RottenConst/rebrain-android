@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
-import com.rebrain.konstload.foodapp.view.ButtonTab
 import kotlinx.android.synthetic.main.fragment_favorited.*
+import kotlinx.android.synthetic.main.layout_bottom_bar.*
 
 /**
  * класс фрагмент для реализации таба с избранным
@@ -23,7 +23,7 @@ class FavoriteTabFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        activity?.findViewById<ButtonTab>(R.id.favorite_button_tab)?.switchColorButton(true)
+        activity?.favorite_button_tab?.switchColorButton(true)
         return inflater.inflate(R.layout.fragment_favorited, container, false)
     }
 
@@ -33,7 +33,7 @@ class FavoriteTabFragment : BaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        activity?.findViewById<ButtonTab>(R.id.favorite_button_tab)?.switchColorButton(false)
+        activity?.favorite_button_tab?.switchColorButton(false)
     }
 
     companion object {

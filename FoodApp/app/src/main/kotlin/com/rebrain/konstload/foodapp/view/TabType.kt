@@ -9,5 +9,5 @@ enum class TabType(val fragment: Fragment) {
     MAIN(MainTabFragment.newInstance()),
     FAVORITE(FavoriteTabFragment.newInstance());
 
-    var event: (TabType) -> Unit = {}
+    var event: () -> Unit = {}
 }

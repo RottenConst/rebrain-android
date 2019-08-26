@@ -20,8 +20,8 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         addFirstFragment()
 
-        TabType.MAIN.event = { moveFragment(it) }
-        TabType.FAVORITE.event = { moveFragment(it) }
+        TabType.MAIN.event = { moveFragment(TabType.MAIN) }
+        TabType.FAVORITE.event = { moveFragment(TabType.FAVORITE) }
 
         bottom_bar.setClickListener(TabType.FAVORITE)
         bottom_bar.setClickListener(TabType.MAIN)

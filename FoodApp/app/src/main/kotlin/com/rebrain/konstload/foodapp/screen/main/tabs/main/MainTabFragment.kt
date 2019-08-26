@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
 import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselAdapter
-import com.rebrain.konstload.foodapp.view.ButtonTab
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.layout_bottom_bar.*
 
 /**
  * класс фрагмент для реализации главного таба
@@ -24,7 +24,7 @@ class MainTabFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        activity?.findViewById<ButtonTab>(R.id.main_button_tab)?.switchColorButton(true)
+        activity?.main_button_tab?.switchColorButton(true)
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
@@ -35,7 +35,7 @@ class MainTabFragment : BaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        activity?.findViewById<ButtonTab>(R.id.main_button_tab)?.switchColorButton(false)
+        activity?.main_button_tab?.switchColorButton(false)
     }
 
     companion object {

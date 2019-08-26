@@ -36,7 +36,7 @@ class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         if (type.ordinal == buttons.indexOf(buttons[type.ordinal])) {
             buttons[type.ordinal].setOnClickListener {
                 if (!type.fragment.isVisible) {
-                    type.event.invoke(type)
+                    type.event()
                 }
             }
         }
