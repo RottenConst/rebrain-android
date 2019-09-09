@@ -9,6 +9,7 @@ import com.rebrain.konstload.foodapp.base.BaseFragment
 import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.layout_bottom_bar.*
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
 /**
  * класс фрагмент для реализации главного таба
@@ -17,6 +18,10 @@ class MainTabFragment : BaseFragment() {
 
     override fun getName(): String {
         return "MainTabFragment"
+    }
+
+    private fun initToolbar(){
+        food_toolbar.title = resources.getText(R.string.toolbar_text_main)
     }
 
     override fun onCreateView(
@@ -31,6 +36,7 @@ class MainTabFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val pageAdapter = FragmentCarouselAdapter(childFragmentManager)
         view_pager.adapter = pageAdapter
+        initToolbar()
     }
 
     override fun onDestroyView() {
