@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
 import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselAdapter
@@ -20,10 +21,6 @@ class MainTabFragment : BaseFragment() {
         return "MainTabFragment"
     }
 
-    private fun initToolbar(){
-        food_toolbar.title = resources.getText(R.string.toolbar_text_main)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,13 +32,19 @@ class MainTabFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val pageAdapter = FragmentCarouselAdapter(childFragmentManager)
-        view_pager.adapter = pageAdapter
+        fragment_main_view_pager.adapter = pageAdapter
         initToolbar()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         activity?.main_button_tab?.switchColorButton(false)
+    }
+
+    private fun initToolbar() {
+        food_toolbar.title = resources.getText(R.string.toolbar_text_main)
+        val activity = activity as AppCompatActivity
+        activity.setSupportActionBar(food_toolbar)
     }
 
     companion object {

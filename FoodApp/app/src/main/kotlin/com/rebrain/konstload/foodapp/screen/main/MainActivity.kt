@@ -18,7 +18,6 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.food_toolbar))
         addFirstFragment()
 
         TabType.MAIN.event = { moveFragment(TabType.MAIN) }
