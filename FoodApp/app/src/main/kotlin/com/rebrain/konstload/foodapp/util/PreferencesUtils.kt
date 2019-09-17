@@ -1,12 +1,10 @@
-package com.rebrain.konstload.foodapp.utils
+package com.rebrain.konstload.foodapp.util
 
 import android.content.Context
-import com.rebrain.konstload.foodapp.R
 
 /**
  * Утилитный класс для работы с SharedPreferences
  **/
-
 class PreferencesUtils(private val context: Context) {
 
     fun getPref(res: Int): Any? {

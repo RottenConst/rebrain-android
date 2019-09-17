@@ -1,4 +1,4 @@
-package com.rebrain.konstload.foodapp.utils
+package com.rebrain.konstload.foodapp.util
 
 import android.content.Context
 

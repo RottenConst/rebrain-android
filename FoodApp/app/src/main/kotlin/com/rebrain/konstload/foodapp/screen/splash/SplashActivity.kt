@@ -8,8 +8,8 @@ import com.rebrain.konstload.foodapp.base.BaseActivity
 import com.rebrain.konstload.foodapp.screen.main.MainActivity
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.screen.intro.IntroActivity
-import com.rebrain.konstload.foodapp.utils.HelpUserProgress.showProgressHelp
-import com.rebrain.konstload.foodapp.utils.ProgressHelp.INTRO
+import com.rebrain.konstload.foodapp.util.HelpUserProgress.showProgressHelp
+import com.rebrain.konstload.foodapp.util.ProgressHelp.INTRO
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

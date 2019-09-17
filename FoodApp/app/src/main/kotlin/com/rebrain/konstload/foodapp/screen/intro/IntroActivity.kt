@@ -7,8 +7,8 @@ import androidx.core.content.ContextCompat.startActivity
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseActivity
 import com.rebrain.konstload.foodapp.screen.main.MainActivity
-import com.rebrain.konstload.foodapp.utils.HelpUserProgress.setProgressHelp
-import com.rebrain.konstload.foodapp.utils.ProgressHelp.INTRO
+import com.rebrain.konstload.foodapp.util.HelpUserProgress.setProgressHelp
+import com.rebrain.konstload.foodapp.util.ProgressHelp.INTRO
 import kotlinx.android.synthetic.main.activity_intro.*
 
 /**
