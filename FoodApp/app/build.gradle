@@ -42,4 +42,5 @@ dependencies {
     implementation coroutine.android
 //    timber
     implementation timber
+    implementation 'androidx.cardview:cardview:1.0.0'
 }

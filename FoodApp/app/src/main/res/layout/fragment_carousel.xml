@@ -10,13 +10,13 @@
             android:id="@+id/image_food"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/img_one"
-            tools:srcCompat="@drawable/img_one"
+            android:contentDescription="@string/images_food"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/black"
-            android:contentDescription="@string/images_food"/>
+            app:srcCompat="@drawable/img_one"
+            tools:srcCompat="@drawable/img_one"
+            android:scaleType="centerCrop"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

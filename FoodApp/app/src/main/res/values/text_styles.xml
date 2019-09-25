@@ -40,6 +40,10 @@
         <item name="android:textAppearance">@style/Text.Normal</item>
     </style>
 
+    <style name="TextView.Normal.Green">
+        <item name="android:textColor">@color/green</item>
+    </style>
+
     <style name="TextView.Normal.White">
         <item name="android:letterSpacing">0.03</item>
         <item name="android:lineSpacingExtra">7sp</item>
