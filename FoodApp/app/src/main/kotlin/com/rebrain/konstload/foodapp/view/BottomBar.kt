@@ -34,17 +34,14 @@ class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
     fun setClickListener(type: TabType) {
         if (type.ordinal == buttons.indexOf(buttons[type.ordinal])) {
-            buttons[type.ordinal].setOnClickListener {
-                if (!type.fragment.isVisible) {
-                    type.event()
-                }
+            buttons[type.ordinal]?.setOnClickListener {
+                type.event()
             }
         }
     }
 
     companion object {
-        var buttons = mutableListOf<ButtonTab>()
+        val buttons = arrayOfNulls<ButtonTab>(2)
     }
 }
-
 

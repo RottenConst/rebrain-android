@@ -28,11 +28,13 @@ class MainActivity : BaseActivity() {
     }
 
     private fun addFirstFragment() {
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, TabType.MAIN.fragment)
-            .add(R.id.fragment_container, TabType.FAVORITE.fragment)
-            .detach(TabType.FAVORITE.fragment)
-            .commit()
+        if (supportFragmentManager.fragments.isEmpty()) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, TabType.MAIN.fragment)
+                .add(R.id.fragment_container, TabType.FAVORITE.fragment)
+                .commit()
+            replaceFragment(TabType.MAIN.fragment)
+        }
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -41,10 +43,9 @@ class MainActivity : BaseActivity() {
     }
 
     private fun moveFragment(type: TabType) {
-        val ft = supportFragmentManager.beginTransaction()
         when (type) {
-            TabType.MAIN -> ft.detach(TabType.FAVORITE.fragment).attach(type.fragment).commit()
-            TabType.FAVORITE -> ft.detach(TabType.MAIN.fragment).attach(type.fragment).commit()
+            TabType.MAIN -> replaceFragment(type.fragment)
+            TabType.FAVORITE -> replaceFragment(type.fragment)
         }
     }
 

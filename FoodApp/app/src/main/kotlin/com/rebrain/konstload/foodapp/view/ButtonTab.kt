@@ -2,9 +2,7 @@ package com.rebrain.konstload.foodapp.view
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.Resources
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.View
 import android.widget.LinearLayout
 import com.rebrain.konstload.foodapp.R
@@ -25,7 +23,6 @@ class ButtonTab @JvmOverloads constructor(
         View.inflate(context, R.layout.layout_button_tab_bar, this)
         attrs?.let { applyAttrs(it) }
         orientation = VERTICAL
-        BottomBar.buttons.add(this)
     }
 
     @SuppressLint("MissingSuperCall")
@@ -47,7 +44,7 @@ class ButtonTab @JvmOverloads constructor(
         icon_button_tab.setColorFilter(resources.getColor(color))
     }
 
-    private fun setText(text: String){
+    private fun setText(text: String) {
         title_button_tab.text = text
     }
 
@@ -60,9 +57,9 @@ class ButtonTab @JvmOverloads constructor(
             try {
                 text = getText(R.styleable.ButtonTab_title_button_tab).toString()
                 icon = getResourceId(R.styleable.ButtonTab_icon_button_tab, 0)
-                when(getInt(R.styleable.ButtonTab_type_btn, 0)){
-                    0 -> TabType.MAIN
-                    1 -> TabType.FAVORITE
+                when (getInt(R.styleable.ButtonTab_type_btn, 0)) {
+                    0 -> BottomBar.buttons[0] = this@ButtonTab
+                    1 -> BottomBar.buttons[1] = this@ButtonTab
                 }
             } finally {
                 recycle()

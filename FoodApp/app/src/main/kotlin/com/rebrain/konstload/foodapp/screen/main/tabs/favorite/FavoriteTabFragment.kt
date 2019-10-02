@@ -23,6 +23,7 @@ class FavoriteTabFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        retainInstance = true
         activity?.favorite_button_tab?.switchColorButton(true)
         return inflater.inflate(R.layout.fragment_favorited, container, false)
     }
