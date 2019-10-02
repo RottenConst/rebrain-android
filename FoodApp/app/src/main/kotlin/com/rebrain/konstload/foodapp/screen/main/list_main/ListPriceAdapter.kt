@@ -2,16 +2,15 @@ package com.rebrain.konstload.foodapp.screen.main.list_main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.domain.Product
 import kotlinx.android.synthetic.main.layout_list_item_product.view.*
 
-class ListPrice(
+class ListPriceAdapter(
     val products: MutableList<Product> = mutableListOf()
 ) :
-    RecyclerView.Adapter<ListPrice.ListPriceHolder>() {
+    RecyclerView.Adapter<ListPriceAdapter.ListPriceHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListPriceHolder {
         return ListPriceHolder(LayoutInflater.from(parent.context), parent)
