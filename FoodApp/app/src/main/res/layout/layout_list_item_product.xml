@@ -3,10 +3,10 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp">
 
@@ -25,7 +25,7 @@
                 android:layout_weight="1"
                 android:gravity="start|center_vertical|center_horizontal"
                 android:padding="4dp"
-                android:text="Салат из морских водорослей с ореховым соусом" />
+                android:text="@string/simple_text_product_name" />
 
         <TextView
                 android:id="@+id/text_for_price"
@@ -35,10 +35,8 @@
                 android:layout_margin="8dp"
                 android:layout_weight="2"
                 android:gravity="end|center_horizontal|center_vertical"
-                android:text="1234"
+                android:text="@string/simple_number_product_price"
                 android:textStyle="bold" />
-
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

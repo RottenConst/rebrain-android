@@ -41,7 +41,7 @@ class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     companion object {
-        val buttons = arrayOfNulls<ButtonTab>(2)
+        private const val countButton = 2
+        val buttons = arrayOfNulls<ButtonTab>(countButton)
     }
 }
-

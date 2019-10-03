@@ -8,4 +8,6 @@
     <string name="favorite_tab_text">Favorite</string>
     <string name="icon_button">icon tab bar</string>
     <string name="toolbar_text_main">Главный</string>
+    <string name="simple_text_product_name">Салат из морских водорослей с ореховым соусом</string>
+    <string name="simple_number_product_price">500</string>
 </resources>
