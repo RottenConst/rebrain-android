@@ -12,6 +12,8 @@ buildscript {
         coroutineVer = '1.1.1'
         timberVer = '4.7.1'
         ktxVer = '1.2.0-alpha01'
+        cardViewVer = '1.0.0'
+        glideVer = '4.10.0'
     }
 
     //kotlin
@@ -44,6 +46,11 @@ buildscript {
     //timber
     ext.timber = "com.jakewharton.timber:timber:$timberVer"
 
+    //cardView
+    ext.cardview = "androidx.cardview:cardview:$cardViewVer"
+
+    //glide
+    ext.glide = "com.github.bumptech.glide:glide:$glideVer"
 
     repositories {
         google()
@@ -51,7 +58,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:3.5.1'
         classpath kotlinLib.plugin
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

@@ -10,4 +10,5 @@
     <string name="toolbar_text_main">Главный</string>
     <string name="simple_text_product_name">Салат из морских водорослей с ореховым соусом</string>
     <string name="simple_number_product_price">500</string>
+    <string name="description_img">img_product</string>
 </resources>

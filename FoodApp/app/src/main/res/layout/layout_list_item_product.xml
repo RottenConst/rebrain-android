@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -13,30 +14,46 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:orientation="horizontal">
+            android:layout_margin="8dp">
 
-        <TextView
-                android:id="@+id/text_for_product"
-                style="@style/TextView.Small.Grey"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+        <ImageView
+                android:id="@+id/image_product"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
-                android:gravity="start|center_vertical|center_horizontal"
-                android:padding="4dp"
-                android:text="@string/simple_text_product_name" />
+                android:src="@mipmap/img_product_one"
+                android:contentDescription="@string/description_img" />
 
-        <TextView
-                android:id="@+id/text_for_price"
-                style="@style/TextView.Normal.Green"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="8dp"
-                android:layout_weight="2"
-                android:gravity="end|center_horizontal|center_vertical"
-                android:text="@string/simple_number_product_price"
-                android:textStyle="bold" />
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/text_for_product"
+                    style="@style/TextView.Small.Grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:padding="4dp"
+                    android:text="@string/simple_text_product_name" />
+
+            <TextView
+                    android:id="@+id/text_for_price"
+                    style="@style/TextView.Normal.Green"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="2"
+                    android:text="@string/simple_number_product_price"
+                    android:textStyle="bold" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

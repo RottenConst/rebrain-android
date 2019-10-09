@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  */
 class MainTabFragment : BaseFragment() {
 
-    private val adapter = ListPriceAdapter()
+    private val adapter = ListPriceAdapter(context = activity)
 
     override fun getName(): String {
         return "MainTabFragment"
