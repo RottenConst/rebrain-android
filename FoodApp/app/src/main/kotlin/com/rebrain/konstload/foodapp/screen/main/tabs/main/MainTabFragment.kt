@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  */
 class MainTabFragment : BaseFragment() {
 
-    private val adapter = ListPriceAdapter(context = activity)
+    private val adapter = ListPriceAdapter()
 
     override fun getName(): String {
         return "MainTabFragment"
