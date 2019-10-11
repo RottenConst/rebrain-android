@@ -25,16 +25,16 @@ class ListPriceAdapter(
 
     override fun onBindViewHolder(holder: ListPriceHolder, position: Int) {
         val product = products[position]
-        holder.bind(product, holder.itemView.context)
+        holder.bind(product)
     }
 
     class ListPriceHolder(inflater: LayoutInflater, parent: ViewGroup) : RecyclerView.ViewHolder(
         inflater.inflate(R.layout.layout_list_item_product, parent, false)
     ) {
-        fun bind(data: Product, context: Context) {
+        fun bind(data: Product) {
             itemView.text_for_product.text = data.name
             itemView.text_for_price.text = data.id.toString()
-            Glide.with(context)
+            Glide.with(itemView.context)
                 .load(R.mipmap.img_product_one)
                 .into(itemView.image_product)
         }
