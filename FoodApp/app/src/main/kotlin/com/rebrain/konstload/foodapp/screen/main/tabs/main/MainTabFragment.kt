@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
 import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselAdapter
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
 /**
  * класс фрагмент для реализации главного таба
  */
-class MainTabFragment : BaseFragment() {
+class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private val adapter = ListPriceAdapter()
 
@@ -39,10 +39,10 @@ class MainTabFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val pageAdapter = FragmentCarouselAdapter(childFragmentManager)
         fragment_main_view_pager.adapter = pageAdapter
+        swipe_refresh_product.setOnRefreshListener(this)
         initToolbar()
         initRv()
-        adapter.products.addAll(Generator.getProducts())
-        adapter.notifyDataSetChanged()
+        addGeneratedProduct()
     }
 
     override fun onDestroyView() {
@@ -51,10 +51,21 @@ class MainTabFragment : BaseFragment() {
         activity?.main_button_tab?.switchColorButton(false)
     }
 
+    override fun onRefresh() {
+        adapter.products.clear()
+        addGeneratedProduct()
+        swipe_refresh_product.isRefreshing = false
+    }
+
     private fun initRv() {
         recycler_list_product.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         recycler_list_product.adapter = adapter
+    }
+
+    private fun addGeneratedProduct() {
+        adapter.products.addAll(Generator.getProducts())
+        adapter.notifyDataSetChanged()
     }
 
     private fun initToolbar() {
