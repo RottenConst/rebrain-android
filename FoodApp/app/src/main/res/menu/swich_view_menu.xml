@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/switch_view_button"
+            android:icon="@drawable/ic_menu_icon_grid_list"
+            app:showAsAction="always"
+            android:title="@string/button_switch_menu" />
+</menu>

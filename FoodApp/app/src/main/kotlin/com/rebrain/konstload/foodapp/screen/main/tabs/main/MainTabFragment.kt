@@ -1,10 +1,9 @@
 package com.rebrain.konstload.foodapp.screen.main.tabs.main
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rebrain.konstload.foodapp.R
@@ -27,6 +26,11 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         return "MainTabFragment"
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,6 +49,23 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         addGeneratedProduct()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.swich_view_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean =
+        if (adapter.modeHolderView) {
+            adapter.modeHolderView = false
+            item?.setIcon(R.drawable.ic_menu_icon_linear_list)
+            initRv()
+            true
+        } else {
+            adapter.modeHolderView = true
+            item?.setIcon(R.drawable.ic_menu_icon_grid_list)
+            initRv()
+            false
+        }
+
     override fun onDestroyView() {
         super.onDestroyView()
         adapter.products.clear()
@@ -58,8 +79,14 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun initRv() {
-        recycler_list_product.layoutManager =
-            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        if (adapter.modeHolderView) {
+            recycler_list_product.layoutManager =
+                LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            adapter.notifyDataSetChanged()
+        } else {
+            recycler_list_product.layoutManager = GridLayoutManager(activity, 2)
+            adapter.notifyDataSetChanged()
+        }
         recycler_list_product.adapter = adapter
     }
 
