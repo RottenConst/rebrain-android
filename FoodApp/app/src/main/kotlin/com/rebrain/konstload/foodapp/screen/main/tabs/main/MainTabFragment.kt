@@ -54,13 +54,13 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean =
-        if (adapter.modeHolderView) {
-            adapter.modeHolderView = false
+        if (adapter.isLinearListModeView) {
+            adapter.isLinearListModeView = false
             item?.setIcon(R.drawable.ic_menu_icon_linear_list)
             initRv()
             true
         } else {
-            adapter.modeHolderView = true
+            adapter.isLinearListModeView = true
             item?.setIcon(R.drawable.ic_menu_icon_grid_list)
             initRv()
             false
@@ -79,7 +79,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun initRv() {
-        if (adapter.modeHolderView) {
+        if (adapter.isLinearListModeView) {
             recycler_list_product.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             adapter.notifyDataSetChanged()

@@ -13,12 +13,12 @@ import kotlinx.android.synthetic.main.layout_list_item_product.view.*
  */
 class ListPriceAdapter(
     val products: MutableList<Product> = mutableListOf(),
-    var modeHolderView: Boolean = true
+    var isLinearListModeView: Boolean = true
 ) :
     RecyclerView.Adapter<ListPriceAdapter.ListPriceHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListPriceHolder {
-        return ListPriceHolder(LayoutInflater.from(parent.context), parent, modeHolderView)
+        return ListPriceHolder(LayoutInflater.from(parent.context), parent, isLinearListModeView)
     }
 
     override fun getItemCount(): Int = products.size
@@ -28,10 +28,10 @@ class ListPriceAdapter(
         holder.bind(product)
     }
 
-    class ListPriceHolder(inflater: LayoutInflater, parent: ViewGroup, modeHolder: Boolean) :
+    class ListPriceHolder(inflater: LayoutInflater, parent: ViewGroup, isLinearModeHolder: Boolean) :
         RecyclerView.ViewHolder(
             inflater.inflate(
-                when (modeHolder) {
+                when (isLinearModeHolder) {
                     true -> R.layout.layout_list_item_product
                     else -> R.layout.layout_grid_item_product
                 }, parent, false)
