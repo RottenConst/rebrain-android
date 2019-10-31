@@ -82,11 +82,10 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         if (adapter.isLinearListModeView) {
             recycler_list_product.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-            adapter.notifyDataSetChanged()
         } else {
             recycler_list_product.layoutManager = GridLayoutManager(activity, 2)
-            adapter.notifyDataSetChanged()
         }
+        adapter.notifyDataSetChanged()
         recycler_list_product.adapter = adapter
     }
 
