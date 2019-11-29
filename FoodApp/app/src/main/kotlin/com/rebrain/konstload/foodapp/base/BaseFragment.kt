@@ -15,7 +15,7 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun getName(): String
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         Timber.d("%s onAttach", getName())
     }

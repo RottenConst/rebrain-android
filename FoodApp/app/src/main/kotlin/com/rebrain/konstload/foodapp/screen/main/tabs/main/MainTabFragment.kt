@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
-import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselAdapter
 import com.rebrain.konstload.foodapp.screen.main.list_main.ListPriceAdapter
 import com.rebrain.konstload.foodapp.util.Generator
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -41,27 +40,26 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val pageAdapter = FragmentCarouselAdapter(childFragmentManager)
-        fragment_main_view_pager.adapter = pageAdapter
+        adapter.fm = fragmentManager
         swipe_refresh_product.setOnRefreshListener(this)
         initToolbar()
         initRv()
         addGeneratedProduct()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.swich_view_menu, menu)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.swich_view_menu, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean =
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
         if (adapter.isLinearListModeView) {
             adapter.isLinearListModeView = false
-            item?.setIcon(R.drawable.ic_menu_icon_linear_list)
+            item.setIcon(R.drawable.ic_menu_icon_linear_list)
             initRv()
             true
         } else {
             adapter.isLinearListModeView = true
-            item?.setIcon(R.drawable.ic_menu_icon_grid_list)
+            item.setIcon(R.drawable.ic_menu_icon_grid_list)
             initRv()
             false
         }
@@ -83,7 +81,8 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
             recycler_list_product.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         } else {
-            recycler_list_product.layoutManager = GridLayoutManager(activity, 2)
+            recycler_list_product.layoutManager =
+                GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
         }
         adapter.notifyDataSetChanged()
         recycler_list_product.adapter = adapter

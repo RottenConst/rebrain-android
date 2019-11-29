@@ -31,6 +31,7 @@ dependencies {
     implementation kotlinLib.stdlib_jdk7
     implementation lib.appcompat_v7
     implementation lib.constraint_layout
+    implementation lib.material
     implementation lib.support_v4
     implementation lib.ktx
 //    tests
