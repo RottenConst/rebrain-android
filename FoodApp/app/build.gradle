@@ -30,6 +30,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation kotlinLib.stdlib_jdk7
     implementation lib.appcompat_v7
+    implementation lib.material
     implementation lib.constraint_layout
     implementation lib.support_v4
     implementation lib.ktx

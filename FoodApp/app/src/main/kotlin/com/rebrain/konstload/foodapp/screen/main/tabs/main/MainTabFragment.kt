@@ -41,8 +41,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val pageAdapter = FragmentCarouselAdapter(childFragmentManager)
-        fragment_main_view_pager.adapter = pageAdapter
+        adapter.fragmentManager = fragmentManager
         swipe_refresh_product.setOnRefreshListener(this)
         initToolbar()
         initRv()

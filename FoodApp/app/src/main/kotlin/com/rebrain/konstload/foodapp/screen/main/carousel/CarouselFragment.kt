@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import com.bumptech.glide.Glide
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
+import com.rebrain.konstload.foodapp.util.Generator
 import kotlinx.android.synthetic.main.fragment_carousel.*
 
 const val ARGUMENT_PAGE_NUMBER = "arg_page_number"
@@ -32,23 +34,10 @@ class CarouselFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        image_food.setImageResource(images[pageNumber])
+        Glide.with(view.context).load(Generator.images[pageNumber]).into(image_food)
     }
 
     companion object {
-        val images = listOf(
-            R.drawable.img_one,
-            R.drawable.img_two,
-            R.drawable.img_three,
-            R.drawable.img_four,
-            R.drawable.img_five,
-            R.drawable.img_six,
-            R.drawable.img_seven,
-            R.drawable.img_eight,
-            R.drawable.img_nine,
-            R.drawable.img_ten
-        )
-
         fun newInstance(page: Int): CarouselFragment {
             val carouselFragment = CarouselFragment()
             val arg = bundleOf(ARGUMENT_PAGE_NUMBER to page)
