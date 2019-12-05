@@ -1,5 +1,6 @@
 package com.rebrain.konstload.foodapp.screen.main.carousel
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +17,7 @@ const val ARGUMENT_PAGE_NUMBER = "arg_page_number"
 /**
  * класс фрагмент для реализации карусели с картинками
  */
-class CarouselFragment : BaseFragment() {
+class CarouselFragment(private val images: List<Int>) : BaseFragment() {
 
     private var pageNumber = 0
 
@@ -34,12 +35,12 @@ class CarouselFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Glide.with(view.context).load(Generator.images[pageNumber]).into(image_food)
+        Glide.with(view.context).load(images[pageNumber]).into(image_food)
     }
 
     companion object {
-        fun newInstance(page: Int): CarouselFragment {
-            val carouselFragment = CarouselFragment()
+        fun newInstance(page: Int, images: List<Int>): CarouselFragment {
+            val carouselFragment = CarouselFragment(images)
             val arg = bundleOf(ARGUMENT_PAGE_NUMBER to page)
             carouselFragment.arguments = arg
             return carouselFragment

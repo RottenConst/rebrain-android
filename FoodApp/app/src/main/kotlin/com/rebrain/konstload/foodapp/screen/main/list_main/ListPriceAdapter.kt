@@ -9,6 +9,7 @@ import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.domain.Product
 import com.rebrain.konstload.foodapp.screen.main.carousel.CarouselFragment
 import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselAdapter
+import com.rebrain.konstload.foodapp.util.Generator
 import kotlinx.android.synthetic.main.layout_item_view_pager.view.*
 import kotlinx.android.synthetic.main.layout_list_item_product.view.*
 
@@ -22,13 +23,17 @@ class ListPriceAdapter(
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private val layoutProductListItem = R.layout.layout_list_item_product
+    private val layoutProductGridItem = R.layout.layout_grid_item_product
+    private val layoutCarouselItem = R.layout.layout_item_view_pager
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0) {
-            CarouselHolder(LayoutInflater.from(parent.context), parent, R.layout.layout_item_view_pager)
+            CarouselHolder(LayoutInflater.from(parent.context), parent, layoutCarouselItem)
         } else {
             when (isLinearListModeView) {
-                true -> ListPriceHolder(LayoutInflater.from(parent.context), parent, R.layout.layout_list_item_product)
-                else -> ListPriceHolder(LayoutInflater.from(parent.context), parent, R.layout.layout_grid_item_product)
+                true -> ListPriceHolder(LayoutInflater.from(parent.context), parent, layoutProductListItem)
+                else -> ListPriceHolder(LayoutInflater.from(parent.context), parent, layoutProductGridItem)
             }
         }
     }
@@ -69,7 +74,7 @@ class ListPriceAdapter(
         fun bindCarousel(fm: FragmentManager?, page: Int) {
             itemView.main_carousel_item.adapter = fm?.let { FragmentCarouselAdapter(it) }
             itemView.carousel_indicator.setupWithViewPager(itemView.main_carousel_item, true)
-            CarouselFragment.newInstance(page)
+            CarouselFragment.newInstance(page, Generator.images)
         }
     }
 }
