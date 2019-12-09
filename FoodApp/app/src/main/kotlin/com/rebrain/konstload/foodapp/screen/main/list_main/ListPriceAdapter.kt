@@ -23,18 +23,16 @@ class ListPriceAdapter(
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val layoutProductListItem = R.layout.layout_list_item_product
-    private val layoutProductGridItem = R.layout.layout_grid_item_product
-    private val layoutCarouselItem = R.layout.layout_item_view_pager
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val layout = when {
+            viewType == 0 -> R.layout.layout_item_view_pager
+            isLinearListModeView -> R.layout.layout_list_item_product
+            else -> R.layout.layout_grid_item_product
+        }
         return if (viewType == 0) {
-            CarouselHolder(LayoutInflater.from(parent.context), parent, layoutCarouselItem)
+            CarouselHolder(LayoutInflater.from(parent.context), parent, layout)
         } else {
-            when (isLinearListModeView) {
-                true -> ListPriceHolder(LayoutInflater.from(parent.context), parent, layoutProductListItem)
-                else -> ListPriceHolder(LayoutInflater.from(parent.context), parent, layoutProductGridItem)
-            }
+            ListPriceHolder(LayoutInflater.from(parent.context), parent, layout)
         }
     }
 
@@ -48,9 +46,11 @@ class ListPriceAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val product = products[position]
         when (holder) {
-            is ListPriceHolder -> holder.bindProduct(product)
+            is ListPriceHolder -> {
+                val product = products[position - 1]
+                holder.bindProduct(product)
+            }
             is CarouselHolder -> holder.bindCarousel(fragmentManager, position)
         }
     }
