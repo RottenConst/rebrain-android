@@ -9,21 +9,11 @@
 
     <include layout="@layout/layout_toolbar" />
 
-    <androidx.viewpager.widget.ViewPager
-            android:id="@+id/fragment_main_view_pager"
-            android:layout_width="0dp"
-            android:layout_height="230dp"
-            app:layout_constraintBottom_toTopOf="@+id/swipe_refresh_product"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_conversion_absoluteHeight="731dp"
-            tools:layout_conversion_absoluteWidth="411dp" />
-
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_product"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="56dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

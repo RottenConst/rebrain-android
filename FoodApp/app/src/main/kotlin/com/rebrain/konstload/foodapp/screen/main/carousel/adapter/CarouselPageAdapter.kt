@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.rebrain.konstload.foodapp.screen.main.carousel.CarouselFragment
+import com.rebrain.konstload.foodapp.util.Generator
 
 /**
  * FragmentPagerAdapter - хранит все страницы в памяти, поэтому быстрый при частом или быстрым перелистывании страниц,
@@ -16,21 +17,21 @@ import com.rebrain.konstload.foodapp.screen.main.carousel.CarouselFragment
  */
 class FragmentCarouselAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    override fun getItem(page: Int): Fragment {
-        return CarouselFragment.newInstance(page)
+    override fun getItem(page: Int): Fragment? {
+        return CarouselFragment.newInstance(page, Generator.images)
     }
 
     override fun getCount(): Int {
-        return CarouselFragment.images.size
+        return Generator.images.size
     }
 }
 
 class FragmentCarouselStateAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     override fun getItem(page: Int): Fragment {
-        return CarouselFragment.newInstance(page)
+        return CarouselFragment.newInstance(page, Generator.images)
     }
 
     override fun getCount(): Int {
-        return CarouselFragment.images.size
+        return Generator.images.size
     }
 }
