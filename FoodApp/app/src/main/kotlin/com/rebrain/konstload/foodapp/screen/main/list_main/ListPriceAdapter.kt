@@ -23,6 +23,8 @@ class ListPriceAdapter(
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    lateinit var onProductClick: ((Product) -> Unit)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layout = when {
             viewType == 0 -> R.layout.layout_item_view_pager
@@ -58,9 +60,13 @@ class ListPriceAdapter(
     open class BaseListHolder(inflater: LayoutInflater, parent: ViewGroup, resource: Int) :
         RecyclerView.ViewHolder(inflater.inflate(resource, parent, false))
 
-    class ListPriceHolder(inflater: LayoutInflater, parent: ViewGroup, resource: Int) :
+    inner class ListPriceHolder(inflater: LayoutInflater, parent: ViewGroup, resource: Int) :
         BaseListHolder(inflater, parent, resource) {
-        fun bindProduct(data: Product) {
+        init {
+            itemView.image_basked.setOnClickListener { onProductClick.invoke(products[adapterPosition - 1]) }
+        }
+
+        fun bindProduct(data: Product){
             itemView.text_for_product.text = data.name
             itemView.text_for_price.text = data.id.toString()
             Glide.with(itemView.context)
