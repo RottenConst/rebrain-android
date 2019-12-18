@@ -1,6 +1,7 @@
 package com.rebrain.konstload.foodapp.screen.main
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.ContextCompat.startActivity
@@ -9,6 +10,8 @@ import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseActivity
 import com.rebrain.konstload.foodapp.view.TabType
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.toast
 
 /**
  * главная активность приложения с которой начинаются основные действия в приложении
@@ -25,6 +28,10 @@ class MainActivity : BaseActivity() {
 
         bottom_bar.setClickListener(TabType.FAVORITE)
         bottom_bar.setClickListener(TabType.MAIN)
+    }
+
+    override fun onBackPressed() {
+        safeExit()
     }
 
     private fun addFirstFragment() {
@@ -47,6 +54,17 @@ class MainActivity : BaseActivity() {
             TabType.MAIN -> replaceFragment(type.fragment)
             TabType.FAVORITE -> replaceFragment(type.fragment)
         }
+    }
+
+    private fun safeExit(){
+        alert(R.string.exit_message_dialog, R.string.exit_title_dialog) {
+            positiveButton(R.string.yes) {
+                finish()
+            }
+            negativeButton(R.string.cancel){
+                it.cancel()
+            }
+        }.show()
     }
 
     companion object {

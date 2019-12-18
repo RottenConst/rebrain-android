@@ -12,4 +12,8 @@
     <string name="simple_number_product_price">500</string>
     <string name="description_img">img_product</string>
     <string name="button_switch_menu">Switch view</string>
+    <string name="exit_title_dialog">Выход</string>
+    <string name="exit_message_dialog">Вы хотите выйти из приложения?</string>
+    <string name="yes">Да</string>
+    <string name="cancel">Отмена</string>
 </resources>
