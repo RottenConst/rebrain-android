@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
-import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselAdapter
 import com.rebrain.konstload.foodapp.screen.main.list_main.ListPriceAdapter
 import com.rebrain.konstload.foodapp.util.Generator
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.layout_bottom_bar.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import org.jetbrains.anko.support.v4.toast
 
 /**
  * класс фрагмент для реализации главного таба
@@ -84,6 +84,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         } else {
             recycler_list_product.layoutManager = GridLayoutManager(activity, 2)
         }
+        adapter.onProductClick = {toast("id ${it.id}")}
         adapter.notifyDataSetChanged()
         recycler_list_product.adapter = adapter
     }

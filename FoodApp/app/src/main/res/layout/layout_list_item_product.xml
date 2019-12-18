@@ -25,9 +25,10 @@
                 android:contentDescription="@string/description_img" />
 
         <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_weight="1">
 
             <TextView
                     android:id="@+id/text_for_product"
@@ -53,6 +54,15 @@
                     android:textStyle="bold" />
 
         </LinearLayout>
+
+        <ImageView
+                android:id="@+id/image_basked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/ic_addbasket"
+                android:contentDescription="@string/description_img"/>
 
     </LinearLayout>
 
