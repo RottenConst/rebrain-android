@@ -3,16 +3,17 @@
 buildscript {
     //Versions lib
     ext {
-        kotlin_version = '1.3.30'
-        appCompatVer = '1.0.0'
+        kotlin_version = '1.3.61'
+        appCompatVer = '1.1.0'
+        supportVer = '1.0.0'
         materialVer = '1.0.0'
-        constraintLayoutVer = '2.0.0-beta1'
+        constraintLayoutVer = '2.0.0-beta4'
         junitVer = '4.12'
         espressoVer = '3.1.0'
-        runnerVer = '1.1.0'
+        runnerVer = '1.2.0'
         coroutineVer = '1.1.1'
         timberVer = '4.7.1'
-        ktxVer = '1.2.0-alpha01'
+        ktxVer = '1.2.0-rc01'
         cardViewVer = '1.0.0'
         glideVer = '4.10.0'
         anko_version='0.10.8'
@@ -27,7 +28,7 @@ buildscript {
     //std lib
     ext.lib = [
         appcompat_v7: "androidx.appcompat:appcompat:$appCompatVer",
-        support_v4: "androidx.legacy:legacy-support-v4:$appCompatVer",
+        support_v4: "androidx.legacy:legacy-support-v4:$supportVer",
         ktx: "androidx.core:core-ktx:$ktxVer",
         constraint_layout: "androidx.constraintlayout:constraintlayout:$constraintLayoutVer",
         material: "com.google.android.material:material:$materialVer"

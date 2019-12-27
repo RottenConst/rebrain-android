@@ -17,7 +17,7 @@ import com.rebrain.konstload.foodapp.util.Generator
  */
 class FragmentCarouselAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    override fun getItem(page: Int): Fragment? {
+    override fun getItem(page: Int): Fragment {
         return CarouselFragment.newInstance(page, Generator.images)
     }
 
