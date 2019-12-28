@@ -2,6 +2,10 @@ package com.rebrain.konstload.foodapp.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistry
+import com.rebrain.konstload.foodapp.util.Logger
 import timber.log.Timber
 
 /**
@@ -9,38 +13,11 @@ import timber.log.Timber
  **/
 open class BaseActivity : AppCompatActivity() {
 
+    private lateinit var logger: Logger
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Timber.d("%s onCreate", localClassName)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Timber.d("%s onStart", localClassName)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Timber.d("%s onResume", localClassName)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Timber.d("%s onPause", localClassName)
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Timber.d("%s onStop", localClassName)
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Timber.d("%s onRestart", localClassName)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.d("%s onDestroy", localClassName)
+        logger = Logger()
+        lifecycle.addObserver(logger)
     }
 }
