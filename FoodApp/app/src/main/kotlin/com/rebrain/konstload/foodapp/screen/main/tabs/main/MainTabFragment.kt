@@ -48,19 +48,19 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         addGeneratedProduct()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        inflater?.inflate(R.menu.swich_view_menu, menu)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.swich_view_menu, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean =
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
         if (adapter.isLinearListModeView) {
             adapter.isLinearListModeView = false
-            item?.setIcon(R.drawable.ic_menu_icon_linear_list)
+            item.setIcon(R.drawable.ic_menu_icon_linear_list)
             initRv()
             true
         } else {
             adapter.isLinearListModeView = true
-            item?.setIcon(R.drawable.ic_menu_icon_grid_list)
+            item.setIcon(R.drawable.ic_menu_icon_grid_list)
             initRv()
             false
         }
