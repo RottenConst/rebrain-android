@@ -34,6 +34,7 @@ dependencies {
     implementation lib.constraint_layout
     implementation lib.support_v4
     implementation lib.ktx
+    implementation lib.lifecycle
 //    tests
     testImplementation tests.junit
     androidTestImplementation tests.runner

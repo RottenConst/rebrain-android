@@ -17,6 +17,7 @@ buildscript {
         cardViewVer = '1.0.0'
         glideVer = '4.10.0'
         anko_version='0.10.8'
+        lifecycleVer = '1.1.1'
     }
 
     //kotlin
@@ -31,7 +32,8 @@ buildscript {
         support_v4: "androidx.legacy:legacy-support-v4:$supportVer",
         ktx: "androidx.core:core-ktx:$ktxVer",
         constraint_layout: "androidx.constraintlayout:constraintlayout:$constraintLayoutVer",
-        material: "com.google.android.material:material:$materialVer"
+        material: "com.google.android.material:material:$materialVer",
+        lifecycle: "android.arch.lifecycle:extensions:$lifecycleVer"
     ]
 
     //lib for tests
@@ -65,7 +67,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.6.0'
         classpath kotlinLib.plugin
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
