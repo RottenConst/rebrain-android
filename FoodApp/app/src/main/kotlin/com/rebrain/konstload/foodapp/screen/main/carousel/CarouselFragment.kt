@@ -18,6 +18,7 @@ const val ARGUMENT_PAGE_NUMBER = "arg_page_number"
 class CarouselFragment : BaseFragment() {
 
     private var pageNumber = 0
+    private val images = mutableListOf<Int>()
 
     override fun getName(): String {
         return "CarouselFragment"
@@ -37,16 +38,17 @@ class CarouselFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Glide.with(view.context).load(images[pageNumber]).into(image_food)
+        try {
+            Glide.with(view.context).load(images[pageNumber]).into(image_food)
+        } catch (e: IndexOutOfBoundsException) {
+            Glide.with(view.context).clear(image_food)
+        }
     }
 
     companion object {
-        private val images = mutableListOf<Int>()
-
         fun newInstance(page: Int, images: List<Int>): CarouselFragment {
             val carouselFragment = CarouselFragment()
-            this.images.clear()
-            this.images.addAll(images)
+            carouselFragment.images.addAll(images)
             val arg = bundleOf(ARGUMENT_PAGE_NUMBER to page)
             carouselFragment.arguments = arg
             return carouselFragment
