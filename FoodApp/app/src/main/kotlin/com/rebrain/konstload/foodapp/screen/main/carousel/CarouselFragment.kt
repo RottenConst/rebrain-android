@@ -11,6 +11,7 @@ import com.rebrain.konstload.foodapp.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_carousel.*
 
 const val ARGUMENT_PAGE_NUMBER = "arg_page_number"
+const val ARGUMENT_IMAGE_LIST = "arg_image_list"
 
 /**
  * класс фрагмент для реализации карусели с картинками
@@ -27,6 +28,7 @@ class CarouselFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         pageNumber = arguments?.getInt(ARGUMENT_PAGE_NUMBER) ?: 0
+        images.addAll(arguments?.getIntegerArrayList(ARGUMENT_IMAGE_LIST) as List<Int>)
     }
 
     override fun onCreateView(
@@ -38,18 +40,13 @@ class CarouselFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        try {
-            Glide.with(view.context).load(images[pageNumber]).into(image_food)
-        } catch (e: IndexOutOfBoundsException) {
-            Glide.with(view.context).clear(image_food)
-        }
+        Glide.with(view.context).load(images[pageNumber]).into(image_food)
     }
 
     companion object {
         fun newInstance(page: Int, images: List<Int>): CarouselFragment {
             val carouselFragment = CarouselFragment()
-            carouselFragment.images.addAll(images)
-            val arg = bundleOf(ARGUMENT_PAGE_NUMBER to page)
+            val arg = bundleOf(ARGUMENT_PAGE_NUMBER to page, ARGUMENT_IMAGE_LIST to images.toList())
             carouselFragment.arguments = arg
             return carouselFragment
         }
