@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.domain.Product
 import com.rebrain.konstload.foodapp.screen.main.carousel.CarouselFragment
-import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselAdapter
+import com.rebrain.konstload.foodapp.screen.main.carousel.adapter.FragmentCarouselStateAdapter
 import com.rebrain.konstload.foodapp.util.Generator
 import kotlinx.android.synthetic.main.layout_item_view_pager.view.*
 import kotlinx.android.synthetic.main.layout_list_item_product.view.*
@@ -66,7 +66,7 @@ class ListPriceAdapter(
             itemView.image_basked.setOnClickListener { onProductClick.invoke(products[adapterPosition - 1]) }
         }
 
-        fun bindProduct(data: Product){
+        fun bindProduct(data: Product) {
             itemView.text_for_product.text = data.name
             itemView.text_for_price.text = data.id.toString()
             Glide.with(itemView.context)
@@ -78,7 +78,7 @@ class ListPriceAdapter(
     class CarouselHolder(inflater: LayoutInflater, parent: ViewGroup, resource: Int) :
         BaseListHolder(inflater, parent, resource) {
         fun bindCarousel(fm: FragmentManager?, page: Int) {
-            itemView.main_carousel_item.adapter = fm?.let { FragmentCarouselAdapter(it) }
+            itemView.main_carousel_item.adapter = fm?.let { FragmentCarouselStateAdapter(it) }
             itemView.carousel_indicator.setupWithViewPager(itemView.main_carousel_item, true)
             CarouselFragment.newInstance(page, Generator.images)
         }

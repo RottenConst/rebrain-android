@@ -3,13 +3,15 @@ package com.rebrain.konstload.foodapp.screen.main.tabs.main
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
+import com.rebrain.konstload.foodapp.domain.Product
+import com.rebrain.konstload.foodapp.domain.ProductListViewModel
 import com.rebrain.konstload.foodapp.screen.main.list_main.ListPriceAdapter
-import com.rebrain.konstload.foodapp.util.Generator
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.layout_bottom_bar.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
@@ -21,6 +23,9 @@ import org.jetbrains.anko.support.v4.toast
 class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private val adapter = ListPriceAdapter()
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(ProductListViewModel::class.java)
+    }
 
     override fun getName(): String {
         return "MainTabFragment"
@@ -45,7 +50,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         swipe_refresh_product.setOnRefreshListener(this)
         initToolbar()
         initRv()
-        addGeneratedProduct()
+        addGeneratedProduct(viewModel.productListVM)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -67,13 +72,10 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        adapter.products.clear()
         activity?.main_button_tab?.switchColorButton(false)
     }
 
     override fun onRefresh() {
-        adapter.products.clear()
-        addGeneratedProduct()
         swipe_refresh_product.isRefreshing = false
     }
 
@@ -84,13 +86,13 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         } else {
             recycler_list_product.layoutManager = GridLayoutManager(activity, 2)
         }
-        adapter.onProductClick = {toast("id ${it.id}")}
+        adapter.onProductClick = { toast("id ${it.id}") }
         adapter.notifyDataSetChanged()
         recycler_list_product.adapter = adapter
     }
 
-    private fun addGeneratedProduct() {
-        adapter.products.addAll(Generator.getProducts())
+    private fun addGeneratedProduct(products: List<Product>) {
+        adapter.products.addAll(products)
         adapter.notifyDataSetChanged()
     }
 
