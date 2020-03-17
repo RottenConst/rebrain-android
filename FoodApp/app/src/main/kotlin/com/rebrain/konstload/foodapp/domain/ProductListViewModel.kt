@@ -14,6 +14,10 @@ class ProductListViewModel(private val product: ProductRepository) : ViewModel()
     val productListVM = product.getProductList(Generator)
 }
 
+/**
+ * класс фабрика, для того что бы создовать ViewModel с конструктором,
+ * поскольку ViewModelProvider не знат как и какие обьекты передавать в конструктор
+ */
 class ProductFactory : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
