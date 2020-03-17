@@ -10,6 +10,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.BaseFragment
 import com.rebrain.konstload.foodapp.domain.Product
+import com.rebrain.konstload.foodapp.domain.ProductFactory
 import com.rebrain.konstload.foodapp.domain.ProductListViewModel
 import com.rebrain.konstload.foodapp.screen.main.list_main.ListPriceAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -23,9 +24,8 @@ import org.jetbrains.anko.support.v4.toast
 class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private val adapter = ListPriceAdapter()
-    private val viewModel by lazy {
-        ViewModelProviders.of(this).get(ProductListViewModel::class.java)
-    }
+    private val factory = ProductFactory()
+    private val viewModel by lazy { ViewModelProviders.of(this, factory)[ProductListViewModel::class.java] }
 
     override fun getName(): String {
         return "MainTabFragment"
