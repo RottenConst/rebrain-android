@@ -2,16 +2,15 @@ package com.rebrain.konstload.foodapp.domain
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.rebrain.konstload.foodapp.repository.ProductRepository
 import com.rebrain.konstload.foodapp.util.Generator
 
 /**
  * класс для фрагмента со списком товаров
  */
-class ProductListViewModel(private val product: ProductRepository) : ViewModel() {
+class ProductListViewModel(private val productRepo: ProductRepository) : ViewModel() {
 
-    val productListVM = product.getProductList(Generator)
+    val productListVM = productRepo.getProductList(Generator)
 }
 
 /**

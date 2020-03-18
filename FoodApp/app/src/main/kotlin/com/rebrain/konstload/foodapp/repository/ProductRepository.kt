@@ -8,6 +8,9 @@ import com.rebrain.konstload.foodapp.util.Generator
  */
 class ProductRepository {
 
+    /**
+     * метод для получения списка продуктов
+     */
     fun getProductList(generator: Generator): List<Product>{
         return generator.getProducts()
     }
