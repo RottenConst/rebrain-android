@@ -3,6 +3,7 @@ package com.rebrain.konstload.foodapp.screen.main.tabs.main
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.layout_bottom_bar.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.jetbrains.anko.support.v4.toast
+import timber.log.Timber
 
 /**
  * класс фрагмент для реализации главного таба
@@ -50,7 +52,9 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         swipe_refresh_product.setOnRefreshListener(this)
         initToolbar()
         initRv()
-        addGeneratedProduct(viewModel.productListVM)
+        viewModel.getListProduct().observe(this, Observer {
+          addGeneratedProduct(it)
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -77,6 +81,9 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onRefresh() {
         swipe_refresh_product.isRefreshing = false
+        adapter.products.clear()
+        viewModel.refreshListProduct()
+        adapter.notifyDataSetChanged()
     }
 
     private fun initRv() {
