@@ -1,5 +1,6 @@
 package com.rebrain.konstload.foodapp.domain
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -11,17 +12,15 @@ import com.rebrain.konstload.foodapp.util.Generator
  */
 class ProductListViewModel(private val productRepo: ProductRepository) : ViewModel() {
 
-    private val productLiveData: MutableLiveData<List<Product>> = MutableLiveData()
+    private val mProductLiveData: MutableLiveData<List<Product>> = MutableLiveData()
+    val productLiveData: LiveData<List<Product>> get() = mProductLiveData
 
     init {
-        productLiveData.value = productRepo.getProductList(Generator)
+        mProductLiveData.value = productRepo.getProductList(Generator)
     }
 
-    fun getListProduct() : MutableLiveData<List<Product>> = productLiveData
-
-    fun refreshListProduct() : MutableLiveData<List<Product>> {
-        productLiveData.value = productRepo.getProductList(Generator)
-        return productLiveData
+    fun refreshListProduct() {
+        mProductLiveData.value = productRepo.getProductList(Generator)
     }
 }
 

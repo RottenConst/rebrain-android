@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.layout_bottom_bar.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.jetbrains.anko.support.v4.toast
-import timber.log.Timber
 
 /**
  * класс фрагмент для реализации главного таба
@@ -27,7 +26,12 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private val adapter = ListPriceAdapter()
     private val factory = ProductFactory()
-    private val viewModel by lazy { ViewModelProviders.of(this, factory)[ProductListViewModel::class.java] }
+    private val viewModel by lazy {
+        ViewModelProviders.of(
+            this,
+            factory
+        )[ProductListViewModel::class.java]
+    }
 
     override fun getName(): String {
         return "MainTabFragment"
@@ -52,8 +56,8 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         swipe_refresh_product.setOnRefreshListener(this)
         initToolbar()
         initRv()
-        viewModel.getListProduct().observe(this, Observer {
-          addGeneratedProduct(it)
+        viewModel.productLiveData.observe(this, Observer {
+            addGeneratedProduct(it)
         })
     }
 
@@ -81,7 +85,6 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onRefresh() {
         swipe_refresh_product.isRefreshing = false
-        adapter.products.clear()
         viewModel.refreshListProduct()
         adapter.notifyDataSetChanged()
     }
@@ -99,6 +102,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun addGeneratedProduct(products: List<Product>) {
+        adapter.products.clear()
         adapter.products.addAll(products)
         adapter.notifyDataSetChanged()
     }
