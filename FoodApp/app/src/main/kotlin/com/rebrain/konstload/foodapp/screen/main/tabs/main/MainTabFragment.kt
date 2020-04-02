@@ -86,7 +86,6 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onRefresh() {
         swipe_refresh_product.isRefreshing = false
         viewModel.refreshListProduct()
-        adapter.notifyDataSetChanged()
     }
 
     private fun initRv() {
