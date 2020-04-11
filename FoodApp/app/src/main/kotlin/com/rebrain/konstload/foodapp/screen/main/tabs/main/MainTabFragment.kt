@@ -3,6 +3,7 @@ package com.rebrain.konstload.foodapp.screen.main.tabs.main
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,7 +26,12 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private val adapter = ListPriceAdapter()
     private val factory = ProductFactory()
-    private val viewModel by lazy { ViewModelProviders.of(this, factory)[ProductListViewModel::class.java] }
+    private val viewModel by lazy {
+        ViewModelProviders.of(
+            this,
+            factory
+        )[ProductListViewModel::class.java]
+    }
 
     override fun getName(): String {
         return "MainTabFragment"
@@ -50,7 +56,9 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         swipe_refresh_product.setOnRefreshListener(this)
         initToolbar()
         initRv()
-        addGeneratedProduct(viewModel.productListVM)
+        viewModel.productLiveData.observe(this, Observer {
+            addGeneratedProduct(it)
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -77,6 +85,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onRefresh() {
         swipe_refresh_product.isRefreshing = false
+        viewModel.refreshListProduct()
     }
 
     private fun initRv() {
@@ -92,6 +101,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun addGeneratedProduct(products: List<Product>) {
+        adapter.products.clear()
         adapter.products.addAll(products)
         adapter.notifyDataSetChanged()
     }
