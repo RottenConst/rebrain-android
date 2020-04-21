@@ -13,6 +13,7 @@ import com.rebrain.konstload.foodapp.base.BaseFragment
 import com.rebrain.konstload.foodapp.domain.Product
 import com.rebrain.konstload.foodapp.domain.ProductFactory
 import com.rebrain.konstload.foodapp.domain.ProductListViewModel
+import com.rebrain.konstload.foodapp.iteractor.ProductModeStorage
 import com.rebrain.konstload.foodapp.screen.main.list_main.ListPriceAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.layout_bottom_bar.*
@@ -22,8 +23,11 @@ import org.jetbrains.anko.support.v4.toast
 /**
  * класс фрагмент для реализации главного таба
  */
+const val MODE_RECYCLERVIEW = "mode_recycler_view"
+
 class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
+    private val productMode = ProductModeStorage()
     private val adapter = ListPriceAdapter()
     private val factory = ProductFactory()
     private val viewModel by lazy {
@@ -47,6 +51,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        adapter.isLinearListModeView = productMode.getProductModeView(context)!!
         activity?.main_button_tab?.switchColorButton(true)
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
@@ -67,15 +72,15 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         if (adapter.isLinearListModeView) {
-            adapter.isLinearListModeView = false
             item.setIcon(R.drawable.ic_menu_icon_linear_list)
+            adapter.isLinearListModeView = false
             initRv()
-            true
+            productMode.saveProductModeView(adapter.isLinearListModeView, context)
         } else {
-            adapter.isLinearListModeView = true
             item.setIcon(R.drawable.ic_menu_icon_grid_list)
+            adapter.isLinearListModeView = true
             initRv()
-            false
+            productMode.saveProductModeView(adapter.isLinearListModeView, context)
         }
 
     override fun onDestroyView() {
