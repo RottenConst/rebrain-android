@@ -9,12 +9,18 @@ const val MODE_VIEW = "PRODUCT_MODE_VIEW"
 
 class ProductModeStorage {
 
-    fun saveProductModeView(viewModeProduct: Boolean, context: Context?): Boolean {
+    /**
+     * метод для сохранения режима отображения продуктов
+     */
+    fun saveProductModeView(viewModeProduct: Boolean, context: Context?) {
         val editor = context?.getSharedPreferences(MODE_VIEW, Context.MODE_PRIVATE)?.edit()
         editor?.putBoolean(MODE_VIEW, viewModeProduct)
-        return editor?.commit()!!
+        editor?.apply()
     }
 
+    /**
+     * метод для получения режима отображения списка продуктов
+     */
     fun getProductModeView(context: Context?): Boolean? {
         val savedMode = context?.getSharedPreferences(MODE_VIEW, Context.MODE_PRIVATE)
         return savedMode?.getBoolean(MODE_VIEW, true)

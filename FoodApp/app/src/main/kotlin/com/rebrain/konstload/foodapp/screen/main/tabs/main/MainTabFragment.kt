@@ -23,8 +23,6 @@ import org.jetbrains.anko.support.v4.toast
 /**
  * класс фрагмент для реализации главного таба
  */
-const val MODE_RECYCLERVIEW = "mode_recycler_view"
-
 class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private val productMode = ProductModeStorage()
@@ -72,15 +70,17 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         if (adapter.isLinearListModeView) {
-            item.setIcon(R.drawable.ic_menu_icon_linear_list)
             adapter.isLinearListModeView = false
+            item.setIcon(R.drawable.ic_menu_icon_linear_list)
             initRv()
             productMode.saveProductModeView(adapter.isLinearListModeView, context)
+            true
         } else {
-            item.setIcon(R.drawable.ic_menu_icon_grid_list)
             adapter.isLinearListModeView = true
+            item.setIcon(R.drawable.ic_menu_icon_grid_list)
             initRv()
             productMode.saveProductModeView(adapter.isLinearListModeView, context)
+            false
         }
 
     override fun onDestroyView() {
