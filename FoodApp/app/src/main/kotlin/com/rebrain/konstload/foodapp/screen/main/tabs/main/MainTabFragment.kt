@@ -14,6 +14,8 @@ import com.rebrain.konstload.foodapp.domain.Product
 import com.rebrain.konstload.foodapp.domain.ProductFactory
 import com.rebrain.konstload.foodapp.domain.ProductListViewModel
 import com.rebrain.konstload.foodapp.iteractor.ProductModeStorage
+import com.rebrain.konstload.foodapp.iteractor.ProductModeView
+import com.rebrain.konstload.foodapp.repository.ProductModeViewRepository
 import com.rebrain.konstload.foodapp.screen.main.list_main.ListPriceAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.layout_bottom_bar.*
@@ -25,9 +27,10 @@ import org.jetbrains.anko.support.v4.toast
  */
 class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
-    private val productMode = ProductModeStorage()
     private val adapter = ListPriceAdapter()
     private val factory = ProductFactory()
+    private val productModeRepo by lazy {
+        ProductModeViewRepository(ProductModeStorage(context)) }
     private val viewModel by lazy {
         ViewModelProviders.of(
             this,
@@ -49,7 +52,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        adapter.isLinearListModeView = productMode.getProductModeView(context)!!
+        adapter.PriceModeView = productModeRepo.getModeViewProduct()
         activity?.main_button_tab?.switchColorButton(true)
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
@@ -69,19 +72,25 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
-        if (adapter.isLinearListModeView) {
-            adapter.isLinearListModeView = false
-            item.setIcon(R.drawable.ic_menu_icon_linear_list)
-            initRv()
-            productMode.saveProductModeView(adapter.isLinearListModeView, context)
-            true
-        } else {
-            adapter.isLinearListModeView = true
-            item.setIcon(R.drawable.ic_menu_icon_grid_list)
-            initRv()
-            productMode.saveProductModeView(adapter.isLinearListModeView, context)
-            false
+        when (adapter.PriceModeView) {
+            ProductModeView.LINEAR_MODE_VIEW_PRODUCT -> {
+                adapter.PriceModeView = ProductModeView.GRID_MODE_VIEW_PRODUCT
+                item.setIcon(R.drawable.ic_menu_icon_linear_list)
+                initRv()
+                true
+            }
+            ProductModeView.GRID_MODE_VIEW_PRODUCT -> {
+                adapter.PriceModeView = ProductModeView.LINEAR_MODE_VIEW_PRODUCT
+                item.setIcon(R.drawable.ic_menu_icon_grid_list)
+                initRv()
+                false
+            }
         }
+
+    override fun onPause() {
+        super.onPause()
+        productModeRepo.setModeViewProduct(adapter.PriceModeView)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -94,11 +103,11 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun initRv() {
-        if (adapter.isLinearListModeView) {
-            recycler_list_product.layoutManager =
+        when (adapter.PriceModeView) {
+            ProductModeView.LINEAR_MODE_VIEW_PRODUCT -> recycler_list_product.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        } else {
-            recycler_list_product.layoutManager = GridLayoutManager(activity, 2)
+            ProductModeView.GRID_MODE_VIEW_PRODUCT -> recycler_list_product.layoutManager =
+                GridLayoutManager(activity, 2)
         }
         adapter.onProductClick = { toast("id ${it.id}") }
         adapter.notifyDataSetChanged()
