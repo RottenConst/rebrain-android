@@ -52,7 +52,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        adapter.PriceModeView = productModeRepo.getModeViewProduct()
+        adapter.priceModeView = productModeRepo.getModeViewProduct()
         activity?.main_button_tab?.switchColorButton(true)
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
@@ -72,15 +72,15 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
-        when (adapter.PriceModeView) {
+        when (adapter.priceModeView) {
             ProductModeView.LINEAR_MODE_VIEW_PRODUCT -> {
-                adapter.PriceModeView = ProductModeView.GRID_MODE_VIEW_PRODUCT
+                adapter.priceModeView = ProductModeView.GRID_MODE_VIEW_PRODUCT
                 item.setIcon(R.drawable.ic_menu_icon_linear_list)
                 initRv()
                 true
             }
             ProductModeView.GRID_MODE_VIEW_PRODUCT -> {
-                adapter.PriceModeView = ProductModeView.LINEAR_MODE_VIEW_PRODUCT
+                adapter.priceModeView = ProductModeView.LINEAR_MODE_VIEW_PRODUCT
                 item.setIcon(R.drawable.ic_menu_icon_grid_list)
                 initRv()
                 false
@@ -89,7 +89,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onPause() {
         super.onPause()
-        productModeRepo.setModeViewProduct(adapter.PriceModeView)
+        productModeRepo.setModeViewProduct(adapter.priceModeView)
     }
 
     override fun onDestroyView() {
@@ -103,7 +103,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun initRv() {
-        when (adapter.PriceModeView) {
+        when (adapter.priceModeView) {
             ProductModeView.LINEAR_MODE_VIEW_PRODUCT -> recycler_list_product.layoutManager =
                 LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
             ProductModeView.GRID_MODE_VIEW_PRODUCT -> recycler_list_product.layoutManager =

@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.layout_list_item_product.view.*
  */
 class ListPriceAdapter(
     val products: MutableList<Product> = mutableListOf(),
-    internal var PriceModeView: ProductModeView = ProductModeView.LINEAR_MODE_VIEW_PRODUCT,
+    var priceModeView: ProductModeView = ProductModeView.LINEAR_MODE_VIEW_PRODUCT,
     var fragmentManager: FragmentManager? = null
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -29,7 +29,7 @@ class ListPriceAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layout = when {
             viewType == 0 -> R.layout.layout_item_view_pager
-            PriceModeView == ProductModeView.LINEAR_MODE_VIEW_PRODUCT -> R.layout.layout_list_item_product
+            priceModeView == ProductModeView.LINEAR_MODE_VIEW_PRODUCT -> R.layout.layout_list_item_product
             else -> R.layout.layout_grid_item_product
         }
         return if (viewType == 0) {

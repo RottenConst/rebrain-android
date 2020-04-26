@@ -1,7 +1,6 @@
 package com.rebrain.konstload.foodapp.iteractor
 
 import android.content.Context
-import com.rebrain.konstload.foodapp.R
 
 /**
  * класс для сохранения режима отображения списка продуктов в SharedPreferences
@@ -17,21 +16,21 @@ class ProductModeStorage(context: Context?) {
      */
     fun saveProductModeView(viewModeProduct: ProductModeView) {
         val editor = preferencesViewMode?.edit()
-        editor?.putInt(MODE_VIEW, viewModeProduct.layout)
+        editor?.putInt(MODE_VIEW, viewModeProduct.id)
         editor?.apply()
     }
 
     /**
      * метод для получения режима отображения списка продуктов
      */
-    fun getProductModeView(): ProductModeView = when(preferencesViewMode?.getInt(MODE_VIEW, 0)) {
-        R.layout.layout_list_item_product -> ProductModeView.LINEAR_MODE_VIEW_PRODUCT
-        R.layout.layout_grid_item_product -> ProductModeView.GRID_MODE_VIEW_PRODUCT
-        else -> ProductModeView.LINEAR_MODE_VIEW_PRODUCT
-    }
+    fun getProductModeView(): ProductModeView = ProductModeView.getById(preferencesViewMode?.getInt(MODE_VIEW, 0))
 }
 
-enum class ProductModeView(val layout: Int) {
-    LINEAR_MODE_VIEW_PRODUCT(R.layout.layout_list_item_product),
-    GRID_MODE_VIEW_PRODUCT(R.layout.layout_grid_item_product)
+enum class ProductModeView(val id: Int) {
+    LINEAR_MODE_VIEW_PRODUCT(0),
+    GRID_MODE_VIEW_PRODUCT(1);
+
+    companion object {
+        fun getById(id: Int?) = values().find { it.id == id } ?: LINEAR_MODE_VIEW_PRODUCT
+    }
 }
