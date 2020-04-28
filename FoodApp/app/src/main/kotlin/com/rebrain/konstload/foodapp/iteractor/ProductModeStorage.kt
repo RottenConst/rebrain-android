@@ -7,23 +7,24 @@ import android.content.Context
  */
 const val MODE_VIEW = "PRODUCT_MODE_VIEW"
 
-class ProductModeStorage(context: Context?) {
+open class ProductModeStorage(final override val context: Context?) : IStorageModeView<ProductModeView> {
 
     private val preferencesViewMode = context?.getSharedPreferences(MODE_VIEW, Context.MODE_PRIVATE)
 
     /**
      * метод для сохранения режима отображения продуктов
      */
-    fun saveProductModeView(viewModeProduct: ProductModeView) {
+    override fun saveModeView(modeView: ProductModeView) {
         val editor = preferencesViewMode?.edit()
-        editor?.putInt(MODE_VIEW, viewModeProduct.id)
+        editor?.putInt(MODE_VIEW, modeView.id)
         editor?.apply()
     }
 
     /**
      * метод для получения режима отображения списка продуктов
      */
-    fun getProductModeView(): ProductModeView = ProductModeView.getById(preferencesViewMode?.getInt(MODE_VIEW, 0))
+    override fun getModeView(): ProductModeView = ProductModeView.getById(preferencesViewMode?.getInt(
+        MODE_VIEW, 0))
 }
 
 enum class ProductModeView(val id: Int) {
