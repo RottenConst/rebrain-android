@@ -13,6 +13,7 @@ import com.rebrain.konstload.foodapp.base.BaseFragment
 import com.rebrain.konstload.foodapp.domain.Product
 import com.rebrain.konstload.foodapp.domain.ProductFactory
 import com.rebrain.konstload.foodapp.domain.ProductListViewModel
+import com.rebrain.konstload.foodapp.iteractor.ProductModeStorage
 import com.rebrain.konstload.foodapp.iteractor.ProductModeView
 import com.rebrain.konstload.foodapp.repository.ProductModeViewRepository
 import com.rebrain.konstload.foodapp.screen.main.list_main.ListPriceAdapter
@@ -29,7 +30,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     private val adapter = ListPriceAdapter()
     private val factory = ProductFactory()
     private val productModeRepo by lazy {
-        ProductModeViewRepository(context) }
+        ProductModeViewRepository(ProductModeStorage(context)) }
     private val viewModel by lazy {
         ViewModelProviders.of(
             this,
