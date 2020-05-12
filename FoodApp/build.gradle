@@ -18,6 +18,7 @@ buildscript {
         glideVer = '4.10.0'
         anko_version='0.10.8'
         lifecycleVer = '1.1.1'
+        daggerVersion = '2.27'
     }
 
     //kotlin
@@ -49,6 +50,14 @@ buildscript {
             android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVer"
     ]
 
+    //dagger
+    ext.dagger = [
+            daggerAndroid: "com.google.dagger:dagger-android:$daggerVersion",
+            daggerSupport: "com.google.dagger:dagger-android-support:$daggerVersion",
+            daggerCompiler: "com.google.dagger:dagger-compiler:$daggerVersion",
+            daggerProcessor: "com.google.dagger:dagger-android-processor:$daggerVersion"
+    ]
+
     //timber
     ext.timber = "com.jakewharton.timber:timber:$timberVer"
 
@@ -67,7 +76,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.0'
+        classpath 'com.android.tools.build:gradle:3.6.3'
         classpath kotlinLib.plugin
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
