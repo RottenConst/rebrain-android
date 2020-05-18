@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -49,4 +48,9 @@ dependencies {
     implementation glide
 //    anko
     implementation anko
+//  dagger
+    implementation dagger.daggerAndroid
+    implementation dagger.daggerSupport
+    kapt dagger.daggerCompiler
+    kapt dagger.daggerProcessor
 }
