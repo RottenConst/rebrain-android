@@ -4,6 +4,9 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 
+/**
+ * Класс - модуль генерирующий зависимость, для поставки обьекта Context
+ */
 @Module
 class ContextModule(val context: Context) {
 
