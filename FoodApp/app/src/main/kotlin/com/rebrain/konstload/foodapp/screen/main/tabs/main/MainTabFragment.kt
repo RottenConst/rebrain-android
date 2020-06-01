@@ -4,16 +4,16 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rebrain.konstload.foodapp.R
+import com.rebrain.konstload.foodapp.base.App
 import com.rebrain.konstload.foodapp.base.BaseFragment
 import com.rebrain.konstload.foodapp.domain.Product
-import com.rebrain.konstload.foodapp.domain.ProductFactory
 import com.rebrain.konstload.foodapp.domain.ProductListViewModel
-import com.rebrain.konstload.foodapp.iteractor.ProductModeStorage
 import com.rebrain.konstload.foodapp.iteractor.ProductModeView
 import com.rebrain.konstload.foodapp.repository.ProductModeViewRepository
 import com.rebrain.konstload.foodapp.screen.main.list_main.ListPriceAdapter
@@ -21,16 +21,20 @@ import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.layout_bottom_bar.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 import org.jetbrains.anko.support.v4.toast
+import javax.inject.Inject
 
 /**
  * класс фрагмент для реализации главного таба
  */
 class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
+    @Inject
+    lateinit var productModeRepo: ProductModeViewRepository
+
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
+
     private val adapter = ListPriceAdapter()
-    private val factory = ProductFactory()
-    private val productModeRepo by lazy {
-        ProductModeViewRepository(ProductModeStorage(context)) }
     private val viewModel by lazy {
         ViewModelProviders.of(
             this,
@@ -45,6 +49,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        App.appComponent.inject(this)
     }
 
     override fun onCreateView(

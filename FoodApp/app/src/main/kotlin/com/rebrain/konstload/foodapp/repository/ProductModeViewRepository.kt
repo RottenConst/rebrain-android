@@ -2,11 +2,12 @@ package com.rebrain.konstload.foodapp.repository
 
 import com.rebrain.konstload.foodapp.iteractor.ProductModeView
 import com.rebrain.konstload.foodapp.iteractor.StorageModeView
+import javax.inject.Inject
 
 /**
  * класс для получения и сохранения вида списко продуктов
  */
-class ProductModeViewRepository(private val productModeStorage: StorageModeView) {
+class ProductModeViewRepository @Inject constructor(private val productModeStorage: StorageModeView) {
 
     /**
      * метод для сохранения вида списка продуктов
