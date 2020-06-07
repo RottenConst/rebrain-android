@@ -26,6 +26,7 @@ class App : Application() {
     private fun initAppComponent() {
         appComponent = DaggerAppComponent.builder()
             .productModeStorageModule(ProductModeStorageModule())
-            .contextModule(ContextModule(this)).build()
+            .contextModule(ContextModule(this))
+            .build()
     }
 }

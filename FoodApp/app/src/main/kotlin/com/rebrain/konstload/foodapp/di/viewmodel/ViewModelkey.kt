@@ -1,4 +1,4 @@
-package com.rebrain.konstload.foodapp.di
+package com.rebrain.konstload.foodapp.di.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

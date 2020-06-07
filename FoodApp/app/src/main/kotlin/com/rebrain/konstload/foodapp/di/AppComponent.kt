@@ -1,6 +1,7 @@
 package com.rebrain.konstload.foodapp.di
 
 import android.content.Context
+import com.rebrain.konstload.foodapp.di.viewmodel.ViewModelFactoryModule
 import com.rebrain.konstload.foodapp.iteractor.StorageModeView
 import com.rebrain.konstload.foodapp.screen.main.tabs.main.MainTabFragment
 import dagger.Component

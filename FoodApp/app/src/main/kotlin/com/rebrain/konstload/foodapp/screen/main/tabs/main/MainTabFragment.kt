@@ -3,9 +3,9 @@ package com.rebrain.konstload.foodapp.screen.main.tabs.main
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -35,12 +35,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     lateinit var factory: ViewModelProvider.Factory
 
     private val adapter = ListPriceAdapter()
-    private val viewModel by lazy {
-        ViewModelProviders.of(
-            this,
-            factory
-        )[ProductListViewModel::class.java]
-    }
+    private val viewModel: ProductListViewModel by viewModels { factory }
 
     override fun getName(): String {
         return "MainTabFragment"
@@ -67,7 +62,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         swipe_refresh_product.setOnRefreshListener(this)
         initToolbar()
         initRv()
-        viewModel.productLiveData.observe(this, Observer {
+        viewModel.productLiveData.observe(viewLifecycleOwner, Observer {
             addGeneratedProduct(it)
         })
     }
