@@ -1,6 +1,7 @@
 package com.rebrain.konstload.foodapp.di
 
 import android.content.Context
+import com.rebrain.konstload.foodapp.di.components.PerApplication
 import dagger.Module
 import dagger.Provides
 
@@ -11,5 +12,6 @@ import dagger.Provides
 class ContextModule(val context: Context) {
 
     @Provides
+    @PerApplication
     fun provideContext(): Context = context.applicationContext
 }

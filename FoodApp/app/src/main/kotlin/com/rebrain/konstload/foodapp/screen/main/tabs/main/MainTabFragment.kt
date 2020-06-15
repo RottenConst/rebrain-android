@@ -44,7 +44,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        App.appComponent.inject(this)
+        App.screenComponent.inject(this)
     }
 
     override fun onCreateView(
