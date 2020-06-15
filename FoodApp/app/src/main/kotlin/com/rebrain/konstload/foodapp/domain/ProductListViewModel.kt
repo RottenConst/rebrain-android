@@ -3,14 +3,17 @@ package com.rebrain.konstload.foodapp.domain
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.rebrain.konstload.foodapp.repository.ProductRepository
 import com.rebrain.konstload.foodapp.util.Generator
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * класс для фрагмента со списком товаров
  */
-class ProductListViewModel(private val productRepo: ProductRepository) : ViewModel() {
+@Singleton
+class ProductListViewModel @Inject constructor(private val productRepo: ProductRepository) :
+    ViewModel() {
 
     private val mProductLiveData: MutableLiveData<List<Product>> = MutableLiveData()
     val productLiveData: LiveData<List<Product>> get() = mProductLiveData
@@ -24,13 +27,3 @@ class ProductListViewModel(private val productRepo: ProductRepository) : ViewMod
     }
 }
 
-/**
- * класс фабрика, для того что бы создовать ViewModel с конструктором,
- * поскольку ViewModelProvider не знает как и какие обьекты передавать в конструктор
- */
-class ProductFactory : ViewModelProvider.Factory {
-
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return ProductListViewModel(ProductRepository()) as T
-    }
-}

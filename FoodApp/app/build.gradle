@@ -19,6 +19,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -34,6 +42,7 @@ dependencies {
     implementation lib.support_v4
     implementation lib.ktx
     implementation lib.lifecycle
+    implementation lib.fragment_ktx
 //    tests
     testImplementation tests.junit
     androidTestImplementation tests.runner
