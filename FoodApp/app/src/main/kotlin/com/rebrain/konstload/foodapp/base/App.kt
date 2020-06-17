@@ -15,7 +15,6 @@ class App : Application() {
 
     companion object {
         lateinit var appComponent: AppComponent
-        lateinit var screenComponent: ScreenComponent
     }
 
     override fun onCreate() {
@@ -23,7 +22,6 @@ class App : Application() {
         Timber.plant(Timber.DebugTree())
 
         initAppComponent()
-        initScreenComponent()
     }
 
     private fun initAppComponent() {
@@ -32,8 +30,8 @@ class App : Application() {
             .build()
     }
 
-    private fun initScreenComponent() {
-        screeComponent = DaggerScreenComponent.builder()
+    fun buildScreenComponent():ScreenComponent {
+        return DaggerScreenComponent.builder()
             .appComponent(appComponent)
             .build()
     }

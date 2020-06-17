@@ -12,6 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.App
 import com.rebrain.konstload.foodapp.base.BaseFragment
+import com.rebrain.konstload.foodapp.di.components.ScreenComponent
 import com.rebrain.konstload.foodapp.domain.Product
 import com.rebrain.konstload.foodapp.domain.ProductListViewModel
 import com.rebrain.konstload.foodapp.iteractor.ProductModeView
@@ -34,6 +35,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     @Inject
     lateinit var factory: ViewModelProvider.Factory
 
+    private val screenComponent = App().buildScreenComponent()
     private val adapter = ListPriceAdapter()
     private val viewModel: ProductListViewModel by viewModels { factory }
 
@@ -44,7 +46,7 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        App.screenComponent.inject(this)
+        screenComponent.inject(this)
     }
 
     override fun onCreateView(
