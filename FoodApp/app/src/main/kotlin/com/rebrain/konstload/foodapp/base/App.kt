@@ -1,10 +1,11 @@
 package com.rebrain.konstload.foodapp.base
 
 import android.app.Application
-import com.rebrain.konstload.foodapp.di.AppComponent
 import com.rebrain.konstload.foodapp.di.ContextModule
-import com.rebrain.konstload.foodapp.di.DaggerAppComponent
-import com.rebrain.konstload.foodapp.di.ProductModeStorageModule
+import com.rebrain.konstload.foodapp.di.components.AppComponent
+import com.rebrain.konstload.foodapp.di.components.DaggerAppComponent
+import com.rebrain.konstload.foodapp.di.components.DaggerScreenComponent
+import com.rebrain.konstload.foodapp.di.components.ScreenComponent
 import timber.log.Timber
 
 /**
@@ -25,8 +26,13 @@ class App : Application() {
 
     private fun initAppComponent() {
         appComponent = DaggerAppComponent.builder()
-            .productModeStorageModule(ProductModeStorageModule())
             .contextModule(ContextModule(this))
+            .build()
+    }
+
+    fun buildScreenComponent():ScreenComponent {
+        return DaggerScreenComponent.builder()
+            .appComponent(appComponent)
             .build()
     }
 }
