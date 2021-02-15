@@ -1,7 +1,9 @@
 package com.rebrain.konstload.foodapp.di.components
 
 import android.content.Context
+import com.rebrain.konstload.foodapp.base.BaseFragment
 import com.rebrain.konstload.foodapp.di.viewmodel.ViewModelFactoryModule
+import com.rebrain.konstload.foodapp.screen.main.tabs.favorite.FavoriteTabFragment
 import com.rebrain.konstload.foodapp.screen.main.tabs.main.MainTabFragment
 import dagger.Component
 
@@ -13,4 +15,5 @@ import dagger.Component
 interface ScreenComponent {
     fun appContext(): Context
     fun inject(mainTabFragment: MainTabFragment)
+    fun inject(favoriteTabFragment: FavoriteTabFragment)
 }

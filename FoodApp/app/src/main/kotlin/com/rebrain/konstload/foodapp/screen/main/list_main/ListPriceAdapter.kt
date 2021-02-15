@@ -25,6 +25,7 @@ class ListPriceAdapter(
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     lateinit var onProductClick: ((Product) -> Unit)
+    lateinit var onFavoriteClick: ((Product) -> Unit)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layout = when {
@@ -58,18 +59,29 @@ class ListPriceAdapter(
         }
     }
 
-    open class BaseListHolder(inflater: LayoutInflater, parent: ViewGroup, resource: Int) :
-        RecyclerView.ViewHolder(inflater.inflate(resource, parent, false))
-
     inner class ListPriceHolder(inflater: LayoutInflater, parent: ViewGroup, resource: Int) :
         BaseListHolder(inflater, parent, resource) {
         init {
             itemView.image_basked.setOnClickListener { onProductClick.invoke(products[adapterPosition - 1]) }
+            itemView.favorite_star_btn.setOnClickListener {
+                onFavoriteClick.invoke(products[adapterPosition - 1])
+                switchFavoriteIcon(products[adapterPosition - 1])
+            }
+        }
+
+        private fun switchFavoriteIcon (data: Product){
+            if (!data.favorite) Glide.with(itemView.context)
+                .load(R.drawable.ic_favorite_passive_star)
+                .into(itemView.favorite_star_btn)
+            else Glide.with(itemView.context)
+                .load(R.drawable.ic_favorite_star_24)
+                .into(itemView.favorite_star_btn)
         }
 
         fun bindProduct(data: Product) {
             itemView.text_for_product.text = data.name
             itemView.text_for_price.text = data.id.toString()
+            switchFavoriteIcon(data)
             Glide.with(itemView.context)
                 .load(R.mipmap.img_product_one)
                 .into(itemView.image_product)

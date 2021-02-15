@@ -5,5 +5,6 @@ package com.rebrain.konstload.foodapp.domain
  **/
 data class Product(
     val id: Int,
-    val name: String
+    val name: String,
+    var favorite: Boolean = false
 )

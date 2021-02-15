@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.bumptech.glide.Glide
 import com.rebrain.konstload.foodapp.R
 import com.rebrain.konstload.foodapp.base.App
 import com.rebrain.konstload.foodapp.base.BaseFragment
@@ -16,6 +17,7 @@ import com.rebrain.konstload.foodapp.di.components.ScreenComponent
 import com.rebrain.konstload.foodapp.domain.Product
 import com.rebrain.konstload.foodapp.domain.ProductListViewModel
 import com.rebrain.konstload.foodapp.iteractor.ProductModeView
+import com.rebrain.konstload.foodapp.repository.FavoriteProductRepository
 import com.rebrain.konstload.foodapp.repository.ProductModeViewRepository
 import com.rebrain.konstload.foodapp.screen.main.list_main.ListPriceAdapter
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -112,6 +114,9 @@ class MainTabFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
                 GridLayoutManager(activity, 2)
         }
         adapter.onProductClick = { toast("id ${it.id}") }
+        adapter.onFavoriteClick = {
+            FavoriteProductRepository().setFavoriteProduct(it)
+        }
         adapter.notifyDataSetChanged()
         recycler_list_product.adapter = adapter
     }

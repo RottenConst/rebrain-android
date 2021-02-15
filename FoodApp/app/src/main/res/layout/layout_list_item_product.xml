@@ -11,6 +11,16 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp">
 
+    <ImageButton
+            android:id="@+id/favorite_star_btn"
+            android:layout_width="23dp"
+            android:layout_height="24dp"
+            android:layout_gravity="right|top"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/favorite_background"
+            android:src="@drawable/ic_favorite_passive_star"
+            android:tintMode="multiply" />
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -21,14 +31,14 @@
                 android:layout_width="80dp"
                 android:layout_height="60dp"
                 android:layout_margin="8dp"
-                android:src="@mipmap/img_product_one"
-                android:contentDescription="@string/description_img" />
+                android:contentDescription="@string/description_img"
+                android:src="@mipmap/img_product_one" />
 
         <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="8"
+                android:orientation="vertical">
 
             <TextView
                     android:id="@+id/text_for_product"
@@ -36,7 +46,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:padding="4dp"
                     android:text="@string/simple_text_product_name" />
@@ -55,14 +64,23 @@
 
         </LinearLayout>
 
-        <ImageView
-                android:id="@+id/image_basked"
+        <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="?attr/selectableItemBackground"
-                android:src="@drawable/ic_addbasket"
-                android:contentDescription="@string/description_img"/>
+                android:layout_height="80dp"
+                android:layout_weight="0.5"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:id="@+id/image_basked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="clip_horizontal|center_horizontal"
+                    android:layout_marginTop="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="@string/description_img"
+                    android:src="@drawable/ic_addbasket" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
